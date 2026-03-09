@@ -12,227 +12,257 @@
 11-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:4:5-65
 11-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:4:22-62
 12    <uses-permission
-12-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:5:5-6:38
-13        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-13-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:5:22-78
-14        android:maxSdkVersion="28" />
-14-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:6:9-35
+12-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:5:5-95
+13        android:name="android.permission.BLUETOOTH"
+13-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:5:22-65
+14        android:maxSdkVersion="30" />
+14-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:5:66-92
 15    <uses-permission
-15-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:7:5-8:38
-16        android:name="android.permission.READ_EXTERNAL_STORAGE"
-16-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:7:22-77
-17        android:maxSdkVersion="32" />
-17-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:8:9-35
-18    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
-18-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:9:5-80
-18-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:9:22-77
-19
-20    <uses-feature
-20-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:5-85
-21        android:name="android.hardware.camera"
-21-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:19-57
-22        android:required="false" />
-22-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:58-82
-23    <uses-feature
-23-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:12:5-90
-24        android:name="android.hardware.touchscreen"
-24-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:12:19-62
-25        android:required="false" />
-25-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:12:63-87
-26    <uses-feature
-26-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:5-101
-27        android:name="android.hardware.touchscreen.multitouch"
-27-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:19-73
-28        android:required="false" />
-28-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:74-98
-29    <uses-feature
-29-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:14:5-110
-30        android:name="android.hardware.touchscreen.multitouch.distinct"
-30-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:14:19-82
-31        android:required="false" />
-31-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:14:83-107
-32    <uses-feature
-32-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:5-85
-33        android:name="android.hardware.stylus"
-33-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:19-57
-34        android:required="false" />
-34-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:58-82
-35
-36    <permission
-36-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
-37        android:name="com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-37-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
-38        android:protectionLevel="signature" />
-38-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
-39
-40    <uses-permission android:name="com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-40-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
-40-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
-41
-42    <application
-42-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:17:5-46:19
-43        android:name="com.aufmass.app.AufmassApplication"
-43-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:18:9-43
-44        android:allowBackup="true"
-44-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:19:9-35
-45        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-45-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
-46        android:debuggable="true"
-47        android:extractNativeLibs="false"
-48        android:icon="@drawable/ic_launcher"
-48-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:20:9-45
-49        android:label="@string/app_name"
-49-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:21:9-41
-50        android:roundIcon="@drawable/ic_launcher"
-50-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:22:9-50
-51        android:supportsRtl="true"
-51-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:23:9-35
-52        android:theme="@style/Theme.AufmassApp" >
-52-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:24:9-48
-53        <activity
-53-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:25:9-35:20
-54            android:name="com.aufmass.app.ui.MainActivity"
-54-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:26:13-44
-55            android:configChanges="orientation|screenSize|keyboardHidden"
-55-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:29:13-74
-56            android:enableOnBackInvokedCallback="true"
-56-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:30:13-55
-57            android:exported="true"
-57-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:27:13-36
-58            android:windowSoftInputMode="stateVisible|adjustResize" >
-58-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:28:13-68
-59            <intent-filter>
-59-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:31:13-34:29
-60                <action android:name="android.intent.action.MAIN" />
-60-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:32:17-69
-60-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:32:25-66
-61
-62                <category android:name="android.intent.category.LAUNCHER" />
-62-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:33:17-77
-62-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:33:27-74
-63            </intent-filter>
-64        </activity>
-65
-66        <provider
-67            android:name="androidx.core.content.FileProvider"
-67-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:38:13-62
-68            android:authorities="com.aufmass.app.fileprovider"
-68-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:39:13-64
-69            android:exported="false"
-69-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:40:13-37
-70            android:grantUriPermissions="true" >
-70-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:41:13-47
-71            <meta-data
-71-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:42:13-44:54
-72                android:name="android.support.FILE_PROVIDER_PATHS"
-72-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:43:17-67
-73                android:resource="@xml/file_paths" />
-73-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:44:17-51
-74        </provider>
-75
-76        <service
-76-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:24:9-33:19
-77            android:name="androidx.camera.core.impl.MetadataHolderService"
-77-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:25:13-75
-78            android:enabled="false"
-78-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:26:13-36
-79            android:exported="false" >
-79-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:27:13-37
-80            <meta-data
-80-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:30:13-32:89
-81                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
-81-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:31:17-103
-82                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
-82-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:32:17-86
-83        </service>
-84
-85        <activity
-85-->[androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:23:9-25:39
-86            android:name="androidx.activity.ComponentActivity"
-86-->[androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:24:13-63
-87            android:exported="true" />
-87-->[androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:25:13-36
-88        <activity
-88-->[androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
-89            android:name="androidx.compose.ui.tooling.PreviewActivity"
-89-->[androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
-90            android:exported="true" />
-90-->[androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
-91
-92        <provider
-92-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
-93            android:name="androidx.startup.InitializationProvider"
-93-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
-94            android:authorities="com.aufmass.app.androidx-startup"
-94-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
-95            android:exported="false" >
-95-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37
-96            <meta-data
-96-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
-97                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-97-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
-98                android:value="androidx.startup" />
-98-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
-99            <meta-data
-99-->[androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
-100                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-100-->[androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
-101                android:value="androidx.startup" />
-101-->[androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
-102            <meta-data
-102-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
-103                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-103-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
-104                android:value="androidx.startup" />
-104-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
-105        </provider>
-106
-107        <service
-107-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
-108            android:name="androidx.room.MultiInstanceInvalidationService"
-108-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
-109            android:directBootAware="true"
-109-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
-110            android:exported="false" />
-110-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
-111
-112        <receiver
-112-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
-113            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-113-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
-114            android:directBootAware="false"
-114-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
-115            android:enabled="true"
-115-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
-116            android:exported="true"
-116-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
-117            android:permission="android.permission.DUMP" >
-117-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
-118            <intent-filter>
-118-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
-119                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-119-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
-119-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
-120            </intent-filter>
-121            <intent-filter>
-121-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
-122                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-122-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
-122-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
-123            </intent-filter>
-124            <intent-filter>
-124-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
-125                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-125-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
-125-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
-126            </intent-filter>
-127            <intent-filter>
-127-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
-128                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-128-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
-128-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
-129            </intent-filter>
-130        </receiver>
-131    </application>
-132
-133</manifest>
+15-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:6:5-101
+16        android:name="android.permission.BLUETOOTH_ADMIN"
+16-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:6:22-71
+17        android:maxSdkVersion="30" />
+17-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:6:72-98
+18    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+18-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:7:5-76
+18-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:7:22-73
+19    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+19-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:8:5-73
+19-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:8:22-70
+20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+20-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:9:5-79
+20-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:9:22-76
+21    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+21-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:10:5-81
+21-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:10:22-78
+22    <uses-permission
+22-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:5-12:38
+23        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+23-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:22-78
+24        android:maxSdkVersion="28" />
+24-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:12:9-35
+25    <uses-permission
+25-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:5-14:38
+26        android:name="android.permission.READ_EXTERNAL_STORAGE"
+26-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:22-77
+27        android:maxSdkVersion="32" />
+27-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:14:9-35
+28    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+28-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:5-80
+28-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:22-77
+29
+30    <uses-feature
+30-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:17:5-85
+31        android:name="android.hardware.camera"
+31-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:17:19-57
+32        android:required="false" />
+32-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:17:58-82
+33    <uses-feature
+33-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:18:5-91
+34        android:name="android.hardware.bluetooth_le"
+34-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:18:19-63
+35        android:required="false" />
+35-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:18:64-88
+36    <uses-feature
+36-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:19:5-90
+37        android:name="android.hardware.touchscreen"
+37-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:19:19-62
+38        android:required="false" />
+38-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:19:63-87
+39    <uses-feature
+39-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:20:5-101
+40        android:name="android.hardware.touchscreen.multitouch"
+40-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:20:19-73
+41        android:required="false" />
+41-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:20:74-98
+42    <uses-feature
+42-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:21:5-110
+43        android:name="android.hardware.touchscreen.multitouch.distinct"
+43-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:21:19-82
+44        android:required="false" />
+44-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:21:83-107
+45    <uses-feature
+45-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:22:5-85
+46        android:name="android.hardware.stylus"
+46-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:22:19-57
+47        android:required="false" />
+47-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:22:58-82
+48
+49    <permission
+49-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+50        android:name="com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+50-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+51        android:protectionLevel="signature" />
+51-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+52
+53    <uses-permission android:name="com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+53-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+53-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+54
+55    <application
+55-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:24:5-53:19
+56        android:name="com.aufmass.app.AufmassApplication"
+56-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:25:9-43
+57        android:allowBackup="true"
+57-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:26:9-35
+58        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+58-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+59        android:debuggable="true"
+60        android:extractNativeLibs="false"
+61        android:icon="@drawable/ic_launcher"
+61-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:27:9-45
+62        android:label="@string/app_name"
+62-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:28:9-41
+63        android:roundIcon="@drawable/ic_launcher"
+63-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:29:9-50
+64        android:supportsRtl="true"
+64-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:30:9-35
+65        android:theme="@style/Theme.AufmassApp" >
+65-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:31:9-48
+66        <activity
+66-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:32:9-42:20
+67            android:name="com.aufmass.app.ui.MainActivity"
+67-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:33:13-44
+68            android:configChanges="orientation|screenSize|keyboardHidden"
+68-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:36:13-74
+69            android:enableOnBackInvokedCallback="true"
+69-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:37:13-55
+70            android:exported="true"
+70-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:34:13-36
+71            android:windowSoftInputMode="stateVisible|adjustResize" >
+71-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:35:13-68
+72            <intent-filter>
+72-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:38:13-41:29
+73                <action android:name="android.intent.action.MAIN" />
+73-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:39:17-69
+73-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:39:25-66
+74
+75                <category android:name="android.intent.category.LAUNCHER" />
+75-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:40:17-77
+75-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:40:27-74
+76            </intent-filter>
+77        </activity>
+78
+79        <provider
+80            android:name="androidx.core.content.FileProvider"
+80-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:45:13-62
+81            android:authorities="com.aufmass.app.fileprovider"
+81-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:46:13-64
+82            android:exported="false"
+82-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:47:13-37
+83            android:grantUriPermissions="true" >
+83-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:48:13-47
+84            <meta-data
+84-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:49:13-51:54
+85                android:name="android.support.FILE_PROVIDER_PATHS"
+85-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:50:17-67
+86                android:resource="@xml/file_paths" />
+86-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:51:17-51
+87        </provider>
+88
+89        <service
+89-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:24:9-33:19
+90            android:name="androidx.camera.core.impl.MetadataHolderService"
+90-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:25:13-75
+91            android:enabled="false"
+91-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:26:13-36
+92            android:exported="false" >
+92-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:27:13-37
+93            <meta-data
+93-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:30:13-32:89
+94                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+94-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:31:17-103
+95                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+95-->[androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:32:17-86
+96        </service>
+97
+98        <activity
+98-->[androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:23:9-25:39
+99            android:name="androidx.activity.ComponentActivity"
+99-->[androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:24:13-63
+100            android:exported="true" />
+100-->[androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:25:13-36
+101        <activity
+101-->[androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
+102            android:name="androidx.compose.ui.tooling.PreviewActivity"
+102-->[androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
+103            android:exported="true" />
+103-->[androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
+104
+105        <provider
+105-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+106            android:name="androidx.startup.InitializationProvider"
+106-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
+107            android:authorities="com.aufmass.app.androidx-startup"
+107-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
+108            android:exported="false" >
+108-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37
+109            <meta-data
+109-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+110                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+110-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+111                android:value="androidx.startup" />
+111-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+112            <meta-data
+112-->[androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+113                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+113-->[androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+114                android:value="androidx.startup" />
+114-->[androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+115            <meta-data
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+116                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+117                android:value="androidx.startup" />
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+118        </provider>
+119
+120        <service
+120-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+121            android:name="androidx.room.MultiInstanceInvalidationService"
+121-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+122            android:directBootAware="true"
+122-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+123            android:exported="false" />
+123-->[androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+124
+125        <receiver
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+126            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+127            android:directBootAware="false"
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+128            android:enabled="true"
+128-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+129            android:exported="true"
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+130            android:permission="android.permission.DUMP" >
+130-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+131            <intent-filter>
+131-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+132                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+133            </intent-filter>
+134            <intent-filter>
+134-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+135                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+136            </intent-filter>
+137            <intent-filter>
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+138                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+139            </intent-filter>
+140            <intent-filter>
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+141                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+141-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+141-->[androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+142            </intent-filter>
+143        </receiver>
+144    </application>
+145
+146</manifest>

@@ -1,13 +1,19 @@
 package com.aufmass.app.ui.screens.settings
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.provider.UserDictionary
 import android.text.InputType
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -16,6 +22,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
+import com.aufmass.app.bluetooth.BluetoothManager
+import com.aufmass.app.bluetooth.BluetoothSettingsManager
 import com.aufmass.app.data.local.entity.*
 import com.aufmass.app.ui.components.StylusEditText
 import com.aufmass.app.util.NumberFormatter
@@ -28,7 +38,7 @@ fun SettingsScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Raumarten", "Rhythmen", "Bodenbeläge", "Glasarten", "LV")
+    val tabs = listOf("Raumarten", "Rhythmen", "Bodenbeläge", "Glasarten", "LV", "Bluetooth")
 
     Scaffold(
         topBar = {
@@ -55,6 +65,7 @@ fun SettingsScreen(
                 2 -> BodenbelageEditableTab(uiState, viewModel)
                 3 -> GlasartenEditableTab(uiState, viewModel)
                 4 -> LvEditableTab(uiState, viewModel)
+                5 -> BluetoothSettingsTab()
             }
         }
     }
@@ -639,5 +650,272 @@ private fun addToDictionary(context: Context, word: String) {
         Toast.makeText(context, "Wort zum Wörterbuch hinzugefügt: $word", Toast.LENGTH_SHORT).show()
     } catch (e: Exception) {
         Toast.makeText(context, "Wort zum Wörterbuch hinzugefügt: $word", Toast.LENGTH_SHORT).show()
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BluetoothSettingsTab() {
+    val context = LocalContext.current
+    val bluetoothManager = remember { BluetoothManager.getInstance(context) }
+    val settingsManager = remember { BluetoothSettingsManager.getInstance(context) }
+
+    var macAddress by remember { mutableStateOf(settingsManager.macAddress) }
+    var autoJump by remember { mutableStateOf(settingsManager.autoJump) }
+    var autoConnect by remember { mutableStateOf(settingsManager.autoConnect) }
+
+    var connectionState by remember { mutableStateOf(BluetoothManager.ConnectionState.Disconnected) }
+    var isScanning by remember { mutableStateOf(false) }
+    var logs by remember { mutableStateOf<List<String>>(emptyList()) }
+
+    LaunchedEffect(bluetoothManager.connectionState) {
+        bluetoothManager.connectionState.observeForever { state ->
+            connectionState = state
+        }
+    }
+
+    LaunchedEffect(bluetoothManager.isScanning) {
+        bluetoothManager.isScanning.observeForever { scanning ->
+            isScanning = scanning
+        }
+    }
+
+    LaunchedEffect(bluetoothManager.logMessages) {
+        bluetoothManager.logMessages.observeForever { logMessages ->
+            logs = logMessages
+        }
+    }
+
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val allGranted = permissions.values.all { it }
+        if (allGranted) {
+            bluetoothManager.startScan()
+        } else {
+            Toast.makeText(context, "Berechtigungen erforderlich", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun requestPermissionsAndScan() {
+        val permissions = arrayOf(
+            Manifest.permission.BLUETOOTH_SCAN,
+            Manifest.permission.BLUETOOTH_CONNECT,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+        
+        val allGranted = permissions.all {
+            ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+        }
+        
+        if (allGranted) {
+            bluetoothManager.startScan()
+        } else {
+            permissionLauncher.launch(permissions)
+        }
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text("Bluetooth-Einstellungen", style = MaterialTheme.typography.headlineSmall)
+
+        Card {
+            Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text("Verbindungsstatus", style = MaterialTheme.typography.labelMedium)
+                        Text(
+                            when (connectionState) {
+                                BluetoothManager.ConnectionState.Connected -> "Verbunden"
+                                BluetoothManager.ConnectionState.Connecting -> "Verbinden..."
+                                BluetoothManager.ConnectionState.Error -> "Fehler"
+                                BluetoothManager.ConnectionState.Disconnected -> "Getrennt"
+                                else -> "Unbekannt"
+                            },
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = when (connectionState) {
+                                BluetoothManager.ConnectionState.Connected -> MaterialTheme.colorScheme.primary
+                                BluetoothManager.ConnectionState.Error -> MaterialTheme.colorScheme.error
+                                else -> MaterialTheme.colorScheme.onSurface
+                            }
+                        )
+                    }
+                    Icon(
+                        imageVector = when (connectionState) {
+                            BluetoothManager.ConnectionState.Connected -> Icons.Default.Bluetooth
+                            BluetoothManager.ConnectionState.Connecting -> Icons.Default.BluetoothSearching
+                            else -> Icons.Default.BluetoothDisabled
+                        },
+                        contentDescription = "Bluetooth Status",
+                        tint = when (connectionState) {
+                            BluetoothManager.ConnectionState.Connected -> MaterialTheme.colorScheme.primary
+                            BluetoothManager.ConnectionState.Error -> MaterialTheme.colorScheme.error
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                        },
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+
+                Divider()
+
+                OutlinedTextField(
+                    value = macAddress,
+                    onValueChange = { 
+                        macAddress = it.uppercase()
+                        settingsManager.macAddress = macAddress
+                    },
+                    label = { Text("MAC-Adresse") },
+                    placeholder = { Text("D4:40:1D:EB:BF:5D") },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
+                )
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    OutlinedButton(
+                        onClick = { requestPermissionsAndScan() },
+                        enabled = !isScanning && connectionState != BluetoothManager.ConnectionState.Connected,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        if (isScanning) {
+                            CircularProgressIndicator(modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
+                        } else {
+                            Icon(Icons.Default.Search, contentDescription = null, modifier = Modifier.size(16.dp))
+                        }
+                        Spacer(Modifier.width(8.dp))
+                        Text("Scannen")
+                    }
+
+                    if (connectionState == BluetoothManager.ConnectionState.Connected) {
+                        OutlinedButton(
+                            onClick = { bluetoothManager.disconnect() },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(Icons.Default.BluetoothDisabled, contentDescription = null, modifier = Modifier.size(16.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text("Trennen")
+                        }
+                    } else {
+                        OutlinedButton(
+                            onClick = { 
+                                if (macAddress.isNotBlank()) {
+                                    bluetoothManager.connectToDevice(macAddress)
+                                }
+                            },
+                            enabled = macAddress.isNotBlank() && !isScanning,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(Icons.Default.Bluetooth, contentDescription = null, modifier = Modifier.size(16.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text("Verbinden")
+                        }
+                    }
+                }
+            }
+        }
+
+        Card {
+            Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("Optionen", style = MaterialTheme.typography.titleMedium)
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text("Auto-Jump nach Bluetooth", style = MaterialTheme.typography.bodyLarge)
+                        Text(
+                            "Nach Messwert automatisch zum nächsten Feld springen",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    Switch(
+                        checked = autoJump,
+                        onCheckedChange = {
+                            autoJump = it
+                            settingsManager.autoJump = it
+                        }
+                    )
+                }
+
+                Divider()
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text("Auto-Verbindung", style = MaterialTheme.typography.bodyLarge)
+                        Text(
+                            "Beim App-Start automatisch verbinden",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    Switch(
+                        checked = autoConnect,
+                        onCheckedChange = {
+                            autoConnect = it
+                            settingsManager.autoConnect = it
+                        }
+                    )
+                }
+            }
+        }
+
+        if (settingsManager.lastDeviceName.isNotBlank()) {
+            Card {
+                Row(
+                    modifier = Modifier.padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text("Letztes Gerät: ${settingsManager.lastDeviceName}")
+                }
+            }
+        }
+
+        Card {
+            Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text("Log", style = MaterialTheme.typography.titleMedium)
+                    TextButton(onClick = { bluetoothManager.clearLogs() }) {
+                        Text("Löschen")
+                    }
+                }
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    logs.takeLast(20).forEach { log: String ->
+                        Text(
+                            text = log,
+                            style = MaterialTheme.typography.bodySmall,
+                            fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
+                        )
+                    }
+                }
+            }
+        }
     }
 }
