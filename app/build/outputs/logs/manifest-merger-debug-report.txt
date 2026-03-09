@@ -1,0 +1,529 @@
+-- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:37:9-45:20
+	android:grantUriPermissions
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:41:13-47
+	android:authorities
+		INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:39:13-64
+	android:exported
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:40:13-37
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:38:13-62
+manifest
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:2:1-48:12
+MERGED from [androidx.camera:camera-video:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/442e8a0e20f5c3414099d121270a7b52/transformed/camera-video-1.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.camera:camera-view:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/dbb50b6bf581c393485c37fa09339a41/transformed/camera-view-1.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.camera:camera-lifecycle:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/88655d3d3e5455019a650fd38730606f/transformed/camera-lifecycle-1.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:17:1-36:12
+MERGED from [androidx.camera:camera-core:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/9fc3fb0b40f0a931ee926692f771f0aa/transformed/camera-core-1.3.0/AndroidManifest.xml:17:1-36:12
+MERGED from [androidx.navigation:navigation-common:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/2bb78ed2f9880840d0958f6a64d01002/transformed/navigation-common-2.7.5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/9bd9f0f5fd9be76db1e9dafd29beaa12/transformed/navigation-runtime-2.7.5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/c79f6f19efeda192307b6462eac995a1/transformed/navigation-common-ktx-2.7.5/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/19f73e769c1d95506b4c525be3ca33a5/transformed/navigation-runtime-ktx-2.7.5/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-compose:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/54074a8df9a68b6f32543bb696a63415/transformed/navigation-compose-2.7.5/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.accompanist:accompanist-permissions:0.32.0] /var/home/bazzite/.gradle/caches/transforms-3/37cb7f88b8b45684804b90c2ee6f4a8d/transformed/accompanist-permissions-0.32.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.compose.material3:material3:1.1.2] /var/home/bazzite/.gradle/caches/transforms-3/bb56a1144521a4701afd33fa383c3507/transformed/material3-1.1.2/AndroidManifest.xml:17:1-22:12
+MERGED from [io.coil-kt:coil-compose:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/bf66d8dff3009c7d398d694e9d911f41/transformed/coil-compose-2.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose-base:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/a2b2d7bc93f3a9997bbf8e8360447746/transformed/coil-compose-base-2.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/dc9bfc9a7277ceee736b95857e0cc0af/transformed/coil-2.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-base:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/548abe7f02dcd9522ab7943f534d140b/transformed/coil-base-2.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /var/home/bazzite/.gradle/caches/transforms-3/4400f67fa67e7e123037a1373b086213/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] /var/home/bazzite/.gradle/caches/transforms-3/2c0117c97343d7e503dc4803cea3e117/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.3.6] /var/home/bazzite/.gradle/caches/transforms-3/e5f9e5bbbaf4cbf915f5dbb2edb26d01/transformed/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/1aa237749ac1d0cf361b7ae262e269a2/transformed/activity-1.8.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/e434b26f11cf98e84dd3987cded47d6a/transformed/activity-ktx-1.8.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/ea66550e798843536e8f7cf86a775a6f/transformed/material-ripple-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f535f26b603738bc26aa9b421bd65aa6/transformed/material-icons-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-extended-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4a26a0f46d56993eb12eb727f2c16a42/transformed/material-icons-extended-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/9cb8297c077aa93a77601732a8fae042/transformed/material-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/ec75d23c16740464dbe7bd7aed1cb36c/transformed/foundation-layout-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f161018e642fe2361cc4bb4b7a19e802/transformed/foundation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f7ceddc90cd5136b80b60aae7a568b9f/transformed/animation-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/022d7986a110cb68f7beaf845b33c4cf/transformed/animation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/7559f8b2c1a3c5cc75e719b627f48dcf/transformed/ui-tooling-data-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f16d20429e48f59bfa82844351e5acb7/transformed/ui-unit-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/bcc8b05bd682aea18a58cf2e60510b00/transformed/ui-geometry-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4d2197cdcc31dfde5d8cbd686ef4b319/transformed/ui-util-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/9585b1fb84144e76250d3b2aba24d57c/transformed/ui-tooling-preview-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-text-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/2aa6776f6c126866d1d58fedc6986df8/transformed/ui-text-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/2694df7e44369bc60872d4ef84c26a29/transformed/ui-graphics-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.activity:activity-compose:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/d56c607dd9852ecdd4f7a65d314addf3/transformed/activity-compose-1.8.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/55452a6da99f897659a98a56e290df28/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/3b3783c5cce64cfcb00da9b2b4900185/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/635cdb3fde95c8a53df2f3727380ab57/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/74eb4815a0c8204632790025314df32e/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /var/home/bazzite/.gradle/caches/transforms-3/23d8cb22fafaeffff4b3ab1832be6c82/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /var/home/bazzite/.gradle/caches/transforms-3/9967378aa5eb629446b3758701e136d7/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/2256c54db96fedb908ba70d82da2c6db/transformed/lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/488032b43227834d5037f134d4250d9c/transformed/lifecycle-viewmodel-ktx-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/58aaee57200ec958559f3fd4407727aa/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/bf56b28a66916a9b514a0bf26cdf8c70/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/a4dcf493239c521351c9cc0d3442d310/transformed/lifecycle-runtime-compose-2.6.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/3e68c3d148ecf4da291bb9b71f3c1df8/transformed/lifecycle-runtime-ktx-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/da6a83859b9db06fdae674dd50c5e8e5/transformed/lifecycle-viewmodel-compose-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /var/home/bazzite/.gradle/caches/transforms-3/4970174ed38c0960440da8015d717540/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.compose.ui:ui-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4dcd598478b99738d670811d350181a4/transformed/ui-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.autofill:autofill:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/3116fb25c26b6b36c404efa122e5a4d2/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /var/home/bazzite/.gradle/caches/transforms-3/6e65835f32408253bfa842f1444b1a8e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /var/home/bazzite/.gradle/caches/transforms-3/2b73ce526216826989a341b55a656aec/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/0616935dc7fbea20253019358c3d7ea8/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/c1ae34db7bb8d702e24c9ea518a7728d/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/299eba82bc59d7b925bc47854cf95f3a/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/7f5513a6dd7481b667fda1eb4d06160e/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/6c4b7eabb3f9d1f5a0babd2720ba0ebd/transformed/core-ktx-1.12.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.room:room-ktx:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/f92aae288d62c8613f663d75f48fe554/transformed/room-ktx-2.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /var/home/bazzite/.gradle/caches/transforms-3/0319dcd0f7ae46ee915421ed4c2741da/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.4.0] /var/home/bazzite/.gradle/caches/transforms-3/bdac170ec5d926f2e04117044f3a203c/transformed/sqlite-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/54c12b341255cceed613cb28313790d0/transformed/annotation-experimental-1.3.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/30e193e6fed361d966fc5ec0244e3fd9/transformed/runtime-saveable-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/cda3446f2771dd5f033d827c6402bdd9/transformed/runtime-release/AndroidManifest.xml:2:1-7:12
+MERGED from [io.github.aakira:napier-android-debug:1.4.1] /var/home/bazzite/.gradle/caches/transforms-3/3fbb699f003956fbedf995f68d0ee571/transformed/napier-debug/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /var/home/bazzite/.gradle/caches/transforms-3/48420b01a1c75f22a3f490c54bd1b001/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/d711df8dd502805058520728336ffe48/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/bb76d7ba7abda6bbc3730ef506b020dd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/9c5c7b494c6e8615542797688c0f379f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/c3edccd5dbcf64238c337323b6c786a9/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /var/home/bazzite/.gradle/caches/transforms-3/b3225f8ce50ebdec761a586f801fa4ce/transformed/exifinterface-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/6599ca9337e342f2b0dac527e6c40e67/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:4:5-65
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:4:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:5:5-6:38
+	android:maxSdkVersion
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:6:9-35
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:5:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:7:5-8:38
+	android:maxSdkVersion
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:8:9-35
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:7:22-77
+uses-permission#android.permission.WRITE_USER_DICTIONARY
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:9:22-77
+uses-feature#android.hardware.camera
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:5-85
+	android:required
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:58-82
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:11:19-57
+uses-feature#android.hardware.touchscreen
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:12:5-90
+	android:required
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:12:63-87
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:12:19-62
+uses-feature#android.hardware.touchscreen.multitouch
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:5-101
+	android:required
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:74-98
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:13:19-73
+uses-feature#android.hardware.touchscreen.multitouch.distinct
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:14:5-110
+	android:required
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:14:83-107
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:14:19-82
+uses-feature#android.hardware.stylus
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:5-85
+	android:required
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:58-82
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:15:19-57
+application
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:17:5-46:19
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:17:5-46:19
+MERGED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.camera:camera-core:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/9fc3fb0b40f0a931ee926692f771f0aa/transformed/camera-core-1.3.0/AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.camera:camera-core:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/9fc3fb0b40f0a931ee926692f771f0aa/transformed/camera-core-1.3.0/AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/bb76d7ba7abda6bbc3730ef506b020dd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/bb76d7ba7abda6bbc3730ef506b020dd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/9c5c7b494c6e8615542797688c0f379f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/9c5c7b494c6e8615542797688c0f379f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:23:9-35
+	android:label
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:21:9-41
+	android:roundIcon
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:22:9-50
+	android:icon
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:20:9-45
+	android:allowBackup
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:19:9-35
+	android:theme
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:24:9-48
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:18:9-43
+activity#com.aufmass.app.ui.MainActivity
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:25:9-35:20
+	android:windowSoftInputMode
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:28:13-68
+	android:exported
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:27:13-36
+	android:configChanges
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:29:13-74
+	android:enableOnBackInvokedCallback
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:30:13-55
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:26:13-44
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:31:13-34:29
+action#android.intent.action.MAIN
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:32:17-69
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:32:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:33:17-77
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:33:27-74
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:42:13-44:54
+	android:resource
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:44:17-51
+	android:name
+		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:43:17-67
+uses-sdk
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+MERGED from [androidx.camera:camera-video:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/442e8a0e20f5c3414099d121270a7b52/transformed/camera-video-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-video:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/442e8a0e20f5c3414099d121270a7b52/transformed/camera-video-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-view:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/dbb50b6bf581c393485c37fa09339a41/transformed/camera-view-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-view:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/dbb50b6bf581c393485c37fa09339a41/transformed/camera-view-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-lifecycle:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/88655d3d3e5455019a650fd38730606f/transformed/camera-lifecycle-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-lifecycle:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/88655d3d3e5455019a650fd38730606f/transformed/camera-lifecycle-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.camera:camera-core:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/9fc3fb0b40f0a931ee926692f771f0aa/transformed/camera-core-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.camera:camera-core:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/9fc3fb0b40f0a931ee926692f771f0aa/transformed/camera-core-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/2bb78ed2f9880840d0958f6a64d01002/transformed/navigation-common-2.7.5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/2bb78ed2f9880840d0958f6a64d01002/transformed/navigation-common-2.7.5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/9bd9f0f5fd9be76db1e9dafd29beaa12/transformed/navigation-runtime-2.7.5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/9bd9f0f5fd9be76db1e9dafd29beaa12/transformed/navigation-runtime-2.7.5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/c79f6f19efeda192307b6462eac995a1/transformed/navigation-common-ktx-2.7.5/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/c79f6f19efeda192307b6462eac995a1/transformed/navigation-common-ktx-2.7.5/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/19f73e769c1d95506b4c525be3ca33a5/transformed/navigation-runtime-ktx-2.7.5/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/19f73e769c1d95506b4c525be3ca33a5/transformed/navigation-runtime-ktx-2.7.5/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/54074a8df9a68b6f32543bb696a63415/transformed/navigation-compose-2.7.5/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.7.5] /var/home/bazzite/.gradle/caches/transforms-3/54074a8df9a68b6f32543bb696a63415/transformed/navigation-compose-2.7.5/AndroidManifest.xml:5:5-44
+MERGED from [com.google.accompanist:accompanist-permissions:0.32.0] /var/home/bazzite/.gradle/caches/transforms-3/37cb7f88b8b45684804b90c2ee6f4a8d/transformed/accompanist-permissions-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-permissions:0.32.0] /var/home/bazzite/.gradle/caches/transforms-3/37cb7f88b8b45684804b90c2ee6f4a8d/transformed/accompanist-permissions-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.compose.material3:material3:1.1.2] /var/home/bazzite/.gradle/caches/transforms-3/bb56a1144521a4701afd33fa383c3507/transformed/material3-1.1.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3:1.1.2] /var/home/bazzite/.gradle/caches/transforms-3/bb56a1144521a4701afd33fa383c3507/transformed/material3-1.1.2/AndroidManifest.xml:20:5-44
+MERGED from [io.coil-kt:coil-compose:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/bf66d8dff3009c7d398d694e9d911f41/transformed/coil-compose-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/bf66d8dff3009c7d398d694e9d911f41/transformed/coil-compose-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/a2b2d7bc93f3a9997bbf8e8360447746/transformed/coil-compose-base-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/a2b2d7bc93f3a9997bbf8e8360447746/transformed/coil-compose-base-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/dc9bfc9a7277ceee736b95857e0cc0af/transformed/coil-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/dc9bfc9a7277ceee736b95857e0cc0af/transformed/coil-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/548abe7f02dcd9522ab7943f534d140b/transformed/coil-base-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.5.0] /var/home/bazzite/.gradle/caches/transforms-3/548abe7f02dcd9522ab7943f534d140b/transformed/coil-base-2.5.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /var/home/bazzite/.gradle/caches/transforms-3/4400f67fa67e7e123037a1373b086213/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /var/home/bazzite/.gradle/caches/transforms-3/4400f67fa67e7e123037a1373b086213/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /var/home/bazzite/.gradle/caches/transforms-3/2c0117c97343d7e503dc4803cea3e117/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /var/home/bazzite/.gradle/caches/transforms-3/2c0117c97343d7e503dc4803cea3e117/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.3.6] /var/home/bazzite/.gradle/caches/transforms-3/e5f9e5bbbaf4cbf915f5dbb2edb26d01/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /var/home/bazzite/.gradle/caches/transforms-3/e5f9e5bbbaf4cbf915f5dbb2edb26d01/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/1aa237749ac1d0cf361b7ae262e269a2/transformed/activity-1.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/1aa237749ac1d0cf361b7ae262e269a2/transformed/activity-1.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/e434b26f11cf98e84dd3987cded47d6a/transformed/activity-ktx-1.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/e434b26f11cf98e84dd3987cded47d6a/transformed/activity-ktx-1.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/ea66550e798843536e8f7cf86a775a6f/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/ea66550e798843536e8f7cf86a775a6f/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f535f26b603738bc26aa9b421bd65aa6/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f535f26b603738bc26aa9b421bd65aa6/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4a26a0f46d56993eb12eb727f2c16a42/transformed/material-icons-extended-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4a26a0f46d56993eb12eb727f2c16a42/transformed/material-icons-extended-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/9cb8297c077aa93a77601732a8fae042/transformed/material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/9cb8297c077aa93a77601732a8fae042/transformed/material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/ec75d23c16740464dbe7bd7aed1cb36c/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/ec75d23c16740464dbe7bd7aed1cb36c/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f161018e642fe2361cc4bb4b7a19e802/transformed/foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f161018e642fe2361cc4bb4b7a19e802/transformed/foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f7ceddc90cd5136b80b60aae7a568b9f/transformed/animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f7ceddc90cd5136b80b60aae7a568b9f/transformed/animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/022d7986a110cb68f7beaf845b33c4cf/transformed/animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/022d7986a110cb68f7beaf845b33c4cf/transformed/animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/7559f8b2c1a3c5cc75e719b627f48dcf/transformed/ui-tooling-data-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/7559f8b2c1a3c5cc75e719b627f48dcf/transformed/ui-tooling-data-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f16d20429e48f59bfa82844351e5acb7/transformed/ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/f16d20429e48f59bfa82844351e5acb7/transformed/ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/bcc8b05bd682aea18a58cf2e60510b00/transformed/ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/bcc8b05bd682aea18a58cf2e60510b00/transformed/ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4d2197cdcc31dfde5d8cbd686ef4b319/transformed/ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4d2197cdcc31dfde5d8cbd686ef4b319/transformed/ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/9585b1fb84144e76250d3b2aba24d57c/transformed/ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/9585b1fb84144e76250d3b2aba24d57c/transformed/ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/2aa6776f6c126866d1d58fedc6986df8/transformed/ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/2aa6776f6c126866d1d58fedc6986df8/transformed/ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/2694df7e44369bc60872d4ef84c26a29/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/2694df7e44369bc60872d4ef84c26a29/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/d56c607dd9852ecdd4f7a65d314addf3/transformed/activity-compose-1.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.8.1] /var/home/bazzite/.gradle/caches/transforms-3/d56c607dd9852ecdd4f7a65d314addf3/transformed/activity-compose-1.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/55452a6da99f897659a98a56e290df28/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/55452a6da99f897659a98a56e290df28/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/3b3783c5cce64cfcb00da9b2b4900185/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/3b3783c5cce64cfcb00da9b2b4900185/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/635cdb3fde95c8a53df2f3727380ab57/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/635cdb3fde95c8a53df2f3727380ab57/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/74eb4815a0c8204632790025314df32e/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/74eb4815a0c8204632790025314df32e/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /var/home/bazzite/.gradle/caches/transforms-3/23d8cb22fafaeffff4b3ab1832be6c82/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /var/home/bazzite/.gradle/caches/transforms-3/23d8cb22fafaeffff4b3ab1832be6c82/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /var/home/bazzite/.gradle/caches/transforms-3/9967378aa5eb629446b3758701e136d7/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /var/home/bazzite/.gradle/caches/transforms-3/9967378aa5eb629446b3758701e136d7/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/2256c54db96fedb908ba70d82da2c6db/transformed/lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/2256c54db96fedb908ba70d82da2c6db/transformed/lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/488032b43227834d5037f134d4250d9c/transformed/lifecycle-viewmodel-ktx-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/488032b43227834d5037f134d4250d9c/transformed/lifecycle-viewmodel-ktx-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/58aaee57200ec958559f3fd4407727aa/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/58aaee57200ec958559f3fd4407727aa/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/bf56b28a66916a9b514a0bf26cdf8c70/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/bf56b28a66916a9b514a0bf26cdf8c70/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/a4dcf493239c521351c9cc0d3442d310/transformed/lifecycle-runtime-compose-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/a4dcf493239c521351c9cc0d3442d310/transformed/lifecycle-runtime-compose-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/3e68c3d148ecf4da291bb9b71f3c1df8/transformed/lifecycle-runtime-ktx-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/3e68c3d148ecf4da291bb9b71f3c1df8/transformed/lifecycle-runtime-ktx-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/da6a83859b9db06fdae674dd50c5e8e5/transformed/lifecycle-viewmodel-compose-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/da6a83859b9db06fdae674dd50c5e8e5/transformed/lifecycle-viewmodel-compose-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /var/home/bazzite/.gradle/caches/transforms-3/4970174ed38c0960440da8015d717540/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /var/home/bazzite/.gradle/caches/transforms-3/4970174ed38c0960440da8015d717540/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.compose.ui:ui-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4dcd598478b99738d670811d350181a4/transformed/ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/4dcd598478b99738d670811d350181a4/transformed/ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/3116fb25c26b6b36c404efa122e5a4d2/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/3116fb25c26b6b36c404efa122e5a4d2/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /var/home/bazzite/.gradle/caches/transforms-3/6e65835f32408253bfa842f1444b1a8e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /var/home/bazzite/.gradle/caches/transforms-3/6e65835f32408253bfa842f1444b1a8e/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /var/home/bazzite/.gradle/caches/transforms-3/2b73ce526216826989a341b55a656aec/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /var/home/bazzite/.gradle/caches/transforms-3/2b73ce526216826989a341b55a656aec/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/0616935dc7fbea20253019358c3d7ea8/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/0616935dc7fbea20253019358c3d7ea8/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/c1ae34db7bb8d702e24c9ea518a7728d/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/c1ae34db7bb8d702e24c9ea518a7728d/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/299eba82bc59d7b925bc47854cf95f3a/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/299eba82bc59d7b925bc47854cf95f3a/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/7f5513a6dd7481b667fda1eb4d06160e/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/7f5513a6dd7481b667fda1eb4d06160e/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/6c4b7eabb3f9d1f5a0babd2720ba0ebd/transformed/core-ktx-1.12.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/6c4b7eabb3f9d1f5a0babd2720ba0ebd/transformed/core-ktx-1.12.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/f92aae288d62c8613f663d75f48fe554/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/f92aae288d62c8613f663d75f48fe554/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /var/home/bazzite/.gradle/caches/transforms-3/0319dcd0f7ae46ee915421ed4c2741da/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /var/home/bazzite/.gradle/caches/transforms-3/0319dcd0f7ae46ee915421ed4c2741da/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /var/home/bazzite/.gradle/caches/transforms-3/bdac170ec5d926f2e04117044f3a203c/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /var/home/bazzite/.gradle/caches/transforms-3/bdac170ec5d926f2e04117044f3a203c/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/54c12b341255cceed613cb28313790d0/transformed/annotation-experimental-1.3.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/54c12b341255cceed613cb28313790d0/transformed/annotation-experimental-1.3.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/30e193e6fed361d966fc5ec0244e3fd9/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/30e193e6fed361d966fc5ec0244e3fd9/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/cda3446f2771dd5f033d827c6402bdd9/transformed/runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/cda3446f2771dd5f033d827c6402bdd9/transformed/runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [io.github.aakira:napier-android-debug:1.4.1] /var/home/bazzite/.gradle/caches/transforms-3/3fbb699f003956fbedf995f68d0ee571/transformed/napier-debug/AndroidManifest.xml:7:5-9:41
+MERGED from [io.github.aakira:napier-android-debug:1.4.1] /var/home/bazzite/.gradle/caches/transforms-3/3fbb699f003956fbedf995f68d0ee571/transformed/napier-debug/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /var/home/bazzite/.gradle/caches/transforms-3/48420b01a1c75f22a3f490c54bd1b001/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /var/home/bazzite/.gradle/caches/transforms-3/48420b01a1c75f22a3f490c54bd1b001/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/d711df8dd502805058520728336ffe48/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/d711df8dd502805058520728336ffe48/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/bb76d7ba7abda6bbc3730ef506b020dd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/bb76d7ba7abda6bbc3730ef506b020dd/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/9c5c7b494c6e8615542797688c0f379f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/9c5c7b494c6e8615542797688c0f379f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/c3edccd5dbcf64238c337323b6c786a9/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/c3edccd5dbcf64238c337323b6c786a9/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /var/home/bazzite/.gradle/caches/transforms-3/b3225f8ce50ebdec761a586f801fa4ce/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /var/home/bazzite/.gradle/caches/transforms-3/b3225f8ce50ebdec761a586f801fa4ce/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/6599ca9337e342f2b0dac527e6c40e67/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /var/home/bazzite/.gradle/caches/transforms-3/6599ca9337e342f2b0dac527e6c40e67/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml
+service#androidx.camera.core.impl.MetadataHolderService
+ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:24:9-33:19
+MERGED from [androidx.camera:camera-core:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/9fc3fb0b40f0a931ee926692f771f0aa/transformed/camera-core-1.3.0/AndroidManifest.xml:29:9-33:78
+MERGED from [androidx.camera:camera-core:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/9fc3fb0b40f0a931ee926692f771f0aa/transformed/camera-core-1.3.0/AndroidManifest.xml:29:9-33:78
+	tools:node
+		ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:29:13-31
+	android:enabled
+		ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:26:13-36
+	android:exported
+		ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:28:13-75
+	android:name
+		ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:25:13-75
+meta-data#androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER
+ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:30:13-32:89
+	android:value
+		ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:32:17-86
+	android:name
+		ADDED from [androidx.camera:camera-camera2:1.3.0] /var/home/bazzite/.gradle/caches/transforms-3/4747b36e28e45649fd88072c2ead283c/transformed/camera-camera2-1.3.0/AndroidManifest.xml:31:17-103
+activity#androidx.activity.ComponentActivity
+ADDED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/070e969a4a6778cc3a8f735f1fc7fa8c/transformed/ui-test-manifest-1.5.4/AndroidManifest.xml:24:13-63
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.5.4] /var/home/bazzite/.gradle/caches/transforms-3/b35a58a1f1e8ffed1910566f812e2000/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/9c5c7b494c6e8615542797688c0f379f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/caches/transforms-3/9c5c7b494c6e8615542797688c0f379f/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /var/home/bazzite/.gradle/caches/transforms-3/84767855e8e63f30541c95e8a62cc05d/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+permission#com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+uses-permission#com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.6.1] /var/home/bazzite/.gradle/caches/transforms-3/009a8ab84479cf166763e2835ffcff02/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /var/home/bazzite/.gradle/caches/transforms-3/51779671272043fc3939e1e73497c23d/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92

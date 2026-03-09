@@ -1,0 +1,465 @@
+?? Aufmaß-Tool – Funktions- und Anforderungsspezifikation
+
+Plattform: Android
+Bedienung: Optimiert für Stift- und Fingerbedienung
+1. Hauptnavigation / App-Struktur
+1.1 Startseite (Übersicht)
+
+Liste aller bereits erstellten Aufmaße
+
+Aktionen pro Eintrag: Exportieren, Löschen, Bearbeiten
+
+Button: Neues Aufmaß erstellen
+
+Zugang zum Einstellungsmenü
+
+2. Einstellungsmenü
+2.1 Raumart-Vorgaben
+
+Dienen als Autofill für die Raumerfassung.
+Jede Raumart enthält:
+
+Bezeichnung (z. B. Büro, Lager, Sanitäranlage)
+
+m²-Schnittvorgabe (Standardwert)
+
+2.2 Rhythmus-Vorgaben
+
+Zwei Werte pro Eintrag:
+
+Klartext (z. B. „1/Woche“)
+
+Exportwert als Kommazahl (z. B. 4,33)
+
+2.3 Bodenbeläge
+
+Liste frei definierbarer Bodenarten mit Abkürzungen (z. B. Tepp, Lino).
+2.4 Glasarten
+
+Liste frei definierbarer Glasarten (z. B. DK, Kipp).
+2.5 Leistungsverzeichnis (LV-Vorgaben)
+
+Für jede Raumart wird definiert:
+
+Welche Aufgabe in welche Excel-Spalte exportiert wird
+(z. B. Spalte A = Kehren, Spalte B = 2-stufig wischen)
+
+Platzhalter für den Standardrhythmus, der beim Export ersetzt wird
+
+3. Aufmaß – Allgemeiner Aufbau
+3.1 Stammdaten
+
+Firma / Name
+
+Anschrift
+
+Objektanschrift
+
+Standardrhythmus (Vorgabe für alle Räume, einzeln überschreibbar)
+
+3.2 Objektfragebogen
+
+Inhalte werden später spezifiziert
+
+Soll als eigener Bereich im Aufmaß erscheinen
+
+4. Aufmaß Unterhaltsreinigung
+4.1 Räume erfassen
+
+Erfassungsmaske für neue Räume:
+
+Raumbezeichnung
+
+Kombination aus Raumart (Autofill) + frei ergänzbarer Name
+
+Bodenbelag
+
+Auswahl über Buttons (Einträge aus Einstellungen)
+
+Anzahl
+
+Länge
+
+Breite
+
+m²-Schnittvorgabe
+
+Standardwert aus Raumart, aber pro Raum überschreibbar
+
+Rhythmus
+
+Standardrhythmus vorbelegt, pro Raum änderbar
+
+Notizen
+
+Fotoaufnahme
+
+Foto wird später auf einem separaten Arbeitsblatt ausgegeben, inkl. Raumnamen
+
+4.2 Raumliste
+
+Unterhalb der Erfassungsmaske:
+
+Liste aller erfassten Räume
+
+1 Zeile pro Raum: Raumname + m²
+
+Aktionen: Bearbeiten, Löschen
+
+5. Glasaufmaß
+5.1 Erfassung
+
+Bezeichnung
+
+Glasart
+
+Buttons aus den Einstellungen
+
+Anzahl
+
+Breite
+
+Höhe
+
+Notiz
+
+Foto
+
+5.2 Liste der Glasflächen
+
+1 Eintrag pro Zeile: Bezeichnung + m²
+
+Aktionen: Bearbeiten, Löschen, + / – zur Mengenanpassung
+
+6. Boden / Sonder- & Ergänzungsleistungen (S&E)
+6.1 Erfassung
+
+Bezeichnung
+
+Bodenart (Freitext, keine Vorgaben)
+
+Anzahl
+
+Länge
+
+Breite
+
+Notiz
+
+Fotos
+
+7. Leistungsverzeichnis (LV) im Aufmaß
+
+Für jede im Aufmaß vorkommende Raumart wird maximal ein LV-Eintrag erzeugt.
+
+Dieser wird automatisch mit den Vorgaben aus dem Einstellungsmenü vorausgefüllt.
+
+Platzhalter für Rhythmus wird durch den Standardrhythmus ersetzt.
+
+
+
+
+# **?? Pflichtenheft – Aufmaß-Tool (Android)**
+
+## **1. Zielsetzung**
+Die App dient zur mobilen Erfassung von Aufmaßen für Unterhaltsreinigung, Glasreinigung sowie Boden-/Sonderleistungen. Sie ermöglicht schnelle, intuitive Datenerfassung per Finger oder Stift und erzeugt strukturierte Daten für den Export (Excel).
+
+---
+
+# **2. Systemübersicht**
+
+## **2.1 Plattform**
+- Android (Tablet-optimiert)
+- Bedienung per Finger und Stift
+
+## **2.2 Hauptbereiche**
+- Startseite (Übersicht aller Aufmaße)
+- Aufmaß-Erstellung / Bearbeitung
+- Einstellungsmenü
+- Exportfunktion
+
+---
+
+# **3. Startseite (Übersicht)**
+
+## **3.1 Funktionen**
+- Liste aller gespeicherten Aufmaße
+- Anzeige: Titel, Datum, Status
+- Aktionen pro Aufmaß:
+- Exportieren
+- Löschen
+- Bearbeiten
+- Button: „Neues Aufmaß erstellen“
+- Zugang zum Einstellungsmenü
+
+---
+
+# **4. Einstellungsmenü**
+
+## **4.1 Raumart-Vorgaben**
+- Bezeichnung (z. B. Büro, Lager, Sanitäranlage)
+- m²-Schnittvorgabe (Standardwert)
+- Wird als Autofill genutzt
+
+## **4.2 Rhythmus-Vorgaben**
+- Klartext (z. B. „1/Woche“)
+- Exportwert als Kommazahl (z. B. 4,33)
+
+## **4.3 Bodenbeläge**
+- Liste frei definierbarer Bodenarten mit Abkürzungen (z. B. Tepp, Lino)
+
+## **4.4 Glasarten**
+- Liste frei definierbarer Glasarten (z. B. DK, Kipp)
+
+## **4.5 Leistungsverzeichnis-Vorgaben (LV)**
+Für jede Raumart:
+- Aufgabenliste (z. B. Kehren, 2-stufig wischen)
+- Zuordnung zu Excel-Spalten (z. B. Spalte A, Spalte B)
+- Platzhalter für Standardrhythmus (wird beim Export ersetzt)
+
+---
+
+# **5. Aufmaß – Struktur**
+
+## **5.1 Stammdaten**
+- Firma / Name
+- Anschrift
+- Objektanschrift
+- Standardrhythmus (für alle Räume, überschreibbar)
+
+## **5.2 Objektfragebogen**
+- Struktur wird später spezifiziert
+- Eigener Bereich im Aufmaß
+
+---
+
+# **6. Aufmaß Unterhaltsreinigung**
+
+## **6.1 Erfassung neuer Räume**
+Eingabefelder:
+- Raumbezeichnung
+- Raumart (Autofill) + Namenszusatz
+- Bodenbelag (Buttons aus Einstellungen)
+- Anzahl
+- Länge
+- Breite
+- m²-Schnittvorgabe (Standardwert, überschreibbar)
+- Rhythmus (Standardrhythmus vorbelegt)
+- Notizen
+- Fotoaufnahme
+- Ausgabe auf separatem Arbeitsblatt mit Raumnamen
+
+## **6.2 Raumliste**
+- 1 Zeile pro Raum: Raumname + m²
+- Aktionen:
+- Bearbeiten
+- Löschen
+
+---
+
+# **7. Glasaufmaß**
+
+## **7.1 Erfassung**
+- Bezeichnung
+- Glasart (Buttons aus Einstellungen)
+- Anzahl
+- Breite
+- Höhe
+
+## **7.2 Liste**
+- 1 Zeile pro Eintrag: Bezeichnung + m²
+- Aktionen:
+- Bearbeiten
+- Löschen
+- + / – (Mengenänderung)
+
+---
+
+# **8. Boden / Sonder- & Ergänzungsleistungen (S&E)**
+
+## **8.1 Erfassung**
+- Bezeichnung
+- Bodenart (Freitext)
+- Anzahl
+- Länge
+- Breite
+
+---
+
+# **9. Leistungsverzeichnis (LV)**
+
+## **9.1 Automatische Generierung**
+- Für jede im Aufmaß vorkommende Raumart entsteht maximal ein LV-Eintrag
+- Automatische Befüllung aus den Einstellungen
+- Platzhalter für Rhythmus wird ersetzt
+
+---
+
+# **10. Export**
+
+## **10.1 Anforderungen**
+- Exportformat: Excel-kompatibel
+- Export enthält:
+- Stammdaten
+- Objektfragebogen
+- Raumliste
+- Glasaufmaß
+- Boden/S&E
+- LV-Tabelle
+- Fotoblatt (1 Foto pro Raum)
+
+---
+
+# **11. UX-Anforderungen**
+
+## **11.1 Bedienung**
+- Große Buttons
+- Stift- und Fingeroptimierung
+- Minimale Tastatureingaben
+
+## **11.2 Validierung**
+- Pflichtfelder markiert
+- Automatische m²-Berechnung (L × B × Anzahl)
+- Warnungen bei fehlenden Pflichtangaben
+
+---
+
+# **12. Erweiterbarkeit**
+- Erweiterbare Aufmaßarten
+- Erweiterbare Exportlogik
+- Dynamisch erweiterbare Einstellungen
+
+---
+
+# **13. UI-Konzept (Wireframe-Beschreibung)**
+
+## **13.1 Startseite**
+- Liste (Karten oder Zeilen)
+- Rechts oben: Einstellungen-Icon
+- Floating Action Button: „+ Neues Aufmaß“
+
+## **13.2 Aufmaß-Editor**
+Tabs oder Sektionen:
+- Stammdaten
+- Objektfragebogen
+- Unterhaltsreinigung
+- Glasaufmaß
+- Boden/S&E
+- LV
+
+## **13.3 Raum-Erfassung**
+- Dropdown: Raumart
+- Textfeld: Namenszusatz
+- Bodenbelag: Button-Grid
+- Maßeingaben: Zahleneingabe
+- Foto-Button
+- Speichern-Button
+
+## **13.4 Listenansichten**
+- Einfache Zeilen
+- Rechts: Edit-Icon, Delete-Icon
+
+---
+
+# **14. Datenbankmodell (Vorschlag)**
+
+## **14.1 Tabellenübersicht**
+- `aufmass`
+- `stammdaten`
+- `raum`
+- `glas`
+- `boden_se`
+- `lv`
+- `einstellungen_raumarten`
+- `einstellungen_rhythmen`
+- `einstellungen_boden`
+- `einstellungen_glas`
+- `einstellungen_lv`
+
+## **14.2 Beispielstruktur**
+
+### **aufmass**
+- id
+- titel
+- erstellt_am
+- standardrhythmus
+
+### **raum**
+- id
+- aufmass_id (FK)
+- raumart_id (FK)
+- name
+- bodenbelag_id (FK)
+- anzahl
+- laenge
+- breite
+- schnittvorgabe
+- rhythmus
+- notizen
+- foto_path
+
+### **glas**
+- id
+- aufmass_id (FK)
+- bezeichnung
+- glasart_id (FK)
+- anzahl
+- breite
+- hoehe
+
+### **boden_se**
+- id
+- aufmass_id (FK)
+- bezeichnung
+- bodenart_text
+- anzahl
+- laenge
+- breite
+
+### **lv**
+- id
+- aufmass_id (FK)
+- raumart_id (FK)
+- spalte
+- aufgabe
+- rhythmus_ersetzt
+
+---
+
+# **15. Technische Architektur**
+
+## **15.1 App-Architektur**
+- MVVM (Model-View-ViewModel)
+- Repository-Pattern
+- Lokale Datenbank: SQLite oder Room (Android Jetpack)
+
+## **15.2 Technologien**
+- Kotlin
+- Android Jetpack Compose oder XML-UI
+- Room für Datenhaltung
+- CameraX für Fotoaufnahme
+- Apache POI oder ähnliche Bibliothek für Excel-Export
+
+## **15.3 Offline-Fähigkeit**
+- Vollständig offline nutzbar
+- Export lokal generiert
+
+---
+
+# **16. Export-Struktur (Excel)**
+
+## **16.1 Tabellenblätter**
+- Stammdaten
+- Objektfragebogen
+- Unterhaltsreinigung
+- Glasaufmaß
+- Boden/S&E
+- LV
+- Fotos
+
+## **16.2 Besonderheiten**
+- Fotos: 1 pro Raum, mit Raumnamen als Überschrift
+- LV: Platzhalter automatisch ersetzt
+
+---
+

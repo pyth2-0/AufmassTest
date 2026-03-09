@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/var/home/bazzite/aufmassapp/app"
+    name=":app"
+    type="APP"
+    maven="AufmassApp:app:"
+    agpVersion="8.2.0"
+    buildFolder="build"
+    bootClassPath="/var/home/bazzite/Android/Sdk/platforms/android-34/android.jar:/var/home/bazzite/Android/Sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="debug"/>
+</lint-module>
