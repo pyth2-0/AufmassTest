@@ -33,6 +33,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.aufmass.app.bluetooth.BluetoothManager
+import com.aufmass.app.bluetooth.BluetoothMeasurementHandler
 import com.aufmass.app.data.local.entity.BodenSeEntity
 import com.aufmass.app.data.repository.BodenSeRepository
 import com.aufmass.app.ui.components.StylusEditText
@@ -69,6 +71,42 @@ fun BodenSeScreen(
     val editTextLaenge = remember { mutableStateOf<EditText?>(null) }
     val editTextBreite = remember { mutableStateOf<EditText?>(null) }
     val editTextNotizen = remember { mutableStateOf<EditText?>(null) }
+
+    val bluetoothManager = remember { BluetoothManager.getInstance(context) }
+    val measurementHandler = remember { BluetoothMeasurementHandler.getInstance(context) }
+    var bluetoothConnected by remember { mutableStateOf(false) }
+    var lastMeasurement by remember { mutableStateOf<Double?>(null) }
+
+    LaunchedEffect(bluetoothManager.connectionState) {
+        bluetoothManager.connectionState.observeForever { state ->
+            bluetoothConnected = state == BluetoothManager.ConnectionState.Connected
+        }
+    }
+
+    LaunchedEffect(bluetoothManager.lastMeasurement) {
+        bluetoothManager.lastMeasurement.observeForever { measurement ->
+            if (measurement != null && measurementHandler.isAutoJumpEnabled()) {
+                lastMeasurement = measurement.value
+                val field = measurementHandler.onMeasurementReceived(measurement.value)
+                
+                when (field) {
+                    BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
+                        if (laenge.isBlank()) {
+                            laenge = NumberFormatter.formatDecimal(measurement.value)
+                            editTextLaenge.value?.apply { post { requestFocus() } }
+                        }
+                    }
+                    BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
+                        breite = NumberFormatter.formatDecimal(measurement.value)
+                        editTextBreite.value?.apply { post { requestFocus() } }
+                    }
+                    else -> {}
+                }
+            } else if (measurement != null) {
+                lastMeasurement = measurement.value
+            }
+        }
+    }
 
     var currentPhotoFile by remember { mutableStateOf<File?>(null) }
 
@@ -164,7 +202,29 @@ fun BodenSeScreen(
         Column(modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
                 Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text(if (editingBodenSe == null) "Neue Boden/S&E-Fläche" else "Bearbeiten", style = MaterialTheme.typography.labelLarge)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(if (editingBodenSe == null) "Neue Boden/S&E-Fläche" else "Bearbeiten", style = MaterialTheme.typography.labelLarge)
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (lastMeasurement != null) {
+                                Text(
+                                    "${NumberFormatter.formatDecimal(lastMeasurement!!)}m",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                                Spacer(Modifier.width(8.dp))
+                            }
+                            Icon(
+                                imageVector = if (bluetoothConnected) Icons.Default.Bluetooth else Icons.Default.BluetoothDisabled,
+                                contentDescription = "Bluetooth",
+                                tint = if (bluetoothConnected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
                     
                     StylusEditText(
                         value = bezeichnung, onValueChange = { bezeichnung = it },

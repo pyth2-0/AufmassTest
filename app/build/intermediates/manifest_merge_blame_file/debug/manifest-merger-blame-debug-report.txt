@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.aufmass.app"
-4    android:versionCode="33"
-5    android:versionName="4.13.0" >
+3    package="com.aufmass.test"
+4    android:versionCode="34"
+5    android:versionName="4.14.0-BT" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
@@ -90,12 +90,12 @@
 48
 49    <permission
 49-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
-50        android:name="com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+50        android:name="com.aufmass.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 50-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
 51        android:protectionLevel="signature" />
 51-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
 52
-53    <uses-permission android:name="com.aufmass.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+53    <uses-permission android:name="com.aufmass.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 53-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
 53-->[androidx.core:core:1.12.0] /var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
 54
@@ -146,7 +146,7 @@
 79        <provider
 80            android:name="androidx.core.content.FileProvider"
 80-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:45:13-62
-81            android:authorities="com.aufmass.app.fileprovider"
+81            android:authorities="com.aufmass.test.fileprovider"
 81-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:46:13-64
 82            android:exported="false"
 82-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:47:13-37
@@ -193,7 +193,7 @@
 105-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
 106            android:name="androidx.startup.InitializationProvider"
 106-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
-107            android:authorities="com.aufmass.app.androidx-startup"
+107            android:authorities="com.aufmass.test.androidx-startup"
 107-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
 108            android:exported="false" >
 108-->[androidx.emoji2:emoji2:1.4.0] /var/home/bazzite/.gradle/caches/transforms-3/78e1a0e38df5f19fc8e1129b5d6b70c5/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37

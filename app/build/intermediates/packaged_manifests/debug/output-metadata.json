@@ -4,15 +4,15 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.aufmass.app",
+  "applicationId": "com.aufmass.test",
   "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 33,
-      "versionName": "4.13.0",
+      "versionCode": 34,
+      "versionName": "4.14.0-BT",
       "outputFile": "AndroidManifest.xml"
     }
   ],

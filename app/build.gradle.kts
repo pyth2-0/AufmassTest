@@ -9,11 +9,11 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.aufmass.app"
+        applicationId = "com.aufmass.test"
         minSdk = 26
         targetSdk = 34
-        versionCode = 33
-        versionName = "4.13.0"
+        versionCode = 34
+        versionName = "4.14.0-BT"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
