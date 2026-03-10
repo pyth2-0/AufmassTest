@@ -115,17 +115,14 @@ fun GlasScreen(
                 
                 when (result) {
                     is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
+                        // Wert immer eintragen/aktualisieren
                         val formatted = measurementHandler.formatMeasurement(result.value)
                         when (measurementHandler.getCurrentField()) {
                             BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
-                                if (breite.isBlank()) {
-                                    breite = formatted
-                                }
+                                breite = formatted
                             }
                             BluetoothMeasurementHandler.MeasurementField.HEIGHT -> {
-                                if (hoehe.isBlank()) {
-                                    hoehe = formatted
-                                }
+                                hoehe = formatted
                             }
                             else -> {}
                         }

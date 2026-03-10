@@ -111,17 +111,14 @@ fun BodenSeScreen(
                 
                 when (result) {
                     is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
+                        // Wert immer eintragen/aktualisieren
                         val formatted = measurementHandler.formatMeasurement(result.value)
                         when (measurementHandler.getCurrentField()) {
                             BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
-                                if (laenge.isBlank()) {
-                                    laenge = formatted
-                                }
+                                laenge = formatted
                             }
                             BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
-                                if (breite.isBlank()) {
-                                    breite = formatted
-                                }
+                                breite = formatted
                             }
                             else -> {}
                         }
