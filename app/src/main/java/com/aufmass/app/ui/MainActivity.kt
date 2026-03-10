@@ -13,6 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.aufmass.app.AufmassApplication
+import com.aufmass.app.bluetooth.BluetoothManager
+import com.aufmass.app.bluetooth.BluetoothSettingsManager
 import com.aufmass.app.data.repository.*
 import com.aufmass.app.ui.navigation.Screen
 import com.aufmass.app.ui.screens.aufmass.*
@@ -29,6 +31,13 @@ import kotlinx.coroutines.withContext
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Auto-Connect für Bluetooth beim App-Start
+        val bluetoothSettings = BluetoothSettingsManager.getInstance(this)
+        if (bluetoothSettings.autoConnect && bluetoothSettings.isConfigured()) {
+            val bluetoothManager = BluetoothManager.getInstance(this)
+            bluetoothManager.startPeriodicReconnect()
+        }
         
         val app = application as AufmassApplication
         val database = app.database
