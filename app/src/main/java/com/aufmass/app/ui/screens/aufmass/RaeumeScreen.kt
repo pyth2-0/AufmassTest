@@ -39,6 +39,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.aufmass.app.bluetooth.BluetoothManager
 import com.aufmass.app.bluetooth.BluetoothMeasurementHandler
+import com.aufmass.app.bluetooth.DistoDataParser
 import com.aufmass.app.data.local.entity.AufmassEntity
 import com.aufmass.app.data.local.entity.BodenbelagEntity
 import com.aufmass.app.data.local.entity.RaumEntity
@@ -105,9 +106,13 @@ fun RaeumeScreen(
     var bluetoothConnected by remember { mutableStateOf(false) }
     var lastMeasurement by remember { mutableStateOf<Double?>(null) }
 
-    LaunchedEffect(bluetoothManager.connectionState) {
-        bluetoothManager.connectionState.observeForever { state ->
+    DisposableEffect(bluetoothManager.connectionState) {
+        val observer = androidx.lifecycle.Observer<BluetoothManager.ConnectionState> { state ->
             bluetoothConnected = state == BluetoothManager.ConnectionState.Connected
+        }
+        bluetoothManager.connectionState.observeForever(observer)
+        onDispose {
+            bluetoothManager.connectionState.removeObserver(observer)
         }
     }
 
@@ -127,8 +132,8 @@ fun RaeumeScreen(
         }
     }
 
-    LaunchedEffect(bluetoothManager.lastMeasurement) {
-        bluetoothManager.lastMeasurement.observeForever { measurement ->
+    DisposableEffect(bluetoothManager.lastMeasurement) {
+        val observer = androidx.lifecycle.Observer<DistoDataParser.DistoMeasurement?> { measurement ->
             if (measurement != null) {
                 val result = measurementHandler.onMeasurementReceived(measurement.value)
                 
@@ -163,7 +168,6 @@ fun RaeumeScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.CloseKeyboard -> {
-                        // Wert bleibt stehen, Tastatur schließen, Focus aufheben
                         keyboardController?.hide()
                         focusManager.clearFocus()
                         measurementHandler.clearFocusedField()
@@ -171,9 +175,12 @@ fun RaeumeScreen(
                     else -> {}
                 }
 
-                // Wert anzeigen
                 lastMeasurement = measurement.value
             }
+        }
+        bluetoothManager.lastMeasurement.observeForever(observer)
+        onDispose {
+            bluetoothManager.lastMeasurement.removeObserver(observer)
         }
     }
 

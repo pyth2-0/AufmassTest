@@ -36,6 +36,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.aufmass.app.bluetooth.BluetoothManager
 import com.aufmass.app.bluetooth.BluetoothMeasurementHandler
+import com.aufmass.app.bluetooth.DistoDataParser
 import com.aufmass.app.data.local.entity.GlasEntity
 import com.aufmass.app.data.local.entity.GlasartEntity
 import com.aufmass.app.data.repository.GlasRepository
@@ -83,9 +84,13 @@ fun GlasScreen(
     var bluetoothConnected by remember { mutableStateOf(false) }
     var lastMeasurement by remember { mutableStateOf<Double?>(null) }
 
-    LaunchedEffect(bluetoothManager.connectionState) {
-        bluetoothManager.connectionState.observeForever { state ->
+    DisposableEffect(bluetoothManager.connectionState) {
+        val observer = androidx.lifecycle.Observer<BluetoothManager.ConnectionState> { state ->
             bluetoothConnected = state == BluetoothManager.ConnectionState.Connected
+        }
+        bluetoothManager.connectionState.observeForever(observer)
+        onDispose {
+            bluetoothManager.connectionState.removeObserver(observer)
         }
     }
 
@@ -103,8 +108,8 @@ fun GlasScreen(
         }
     }
 
-    LaunchedEffect(bluetoothManager.lastMeasurement) {
-        bluetoothManager.lastMeasurement.observeForever { measurement ->
+    DisposableEffect(bluetoothManager.lastMeasurement) {
+        val observer = androidx.lifecycle.Observer<DistoDataParser.DistoMeasurement?> { measurement ->
             if (measurement != null) {
                 val result = measurementHandler.onMeasurementReceived(measurement.value)
                 
@@ -145,6 +150,10 @@ fun GlasScreen(
 
                 lastMeasurement = measurement.value
             }
+        }
+        bluetoothManager.lastMeasurement.observeForever(observer)
+        onDispose {
+            bluetoothManager.lastMeasurement.removeObserver(observer)
         }
     }
 
