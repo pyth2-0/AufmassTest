@@ -28,7 +28,8 @@ fun StylusEditText(
     allowComma: Boolean = false,
     onImeNext: (() -> Unit)? = null,
     onImeDone: (() -> Unit)? = null,
-    onViewCreated: ((EditText) -> Unit)? = null
+    onViewCreated: ((EditText) -> Unit)? = null,
+    onFocus: ((Boolean) -> Unit)? = null
 ) {
     var currentText by remember { mutableStateOf(value) }
 
@@ -104,6 +105,11 @@ fun StylusEditText(
                     }
                 })
                 onViewCreated?.invoke(this)
+                onFocus?.let { callback ->
+                    setOnFocusChangeListener { _, hasFocus ->
+                        callback(hasFocus)
+                    }
+                }
             }
         },
         update = { editText ->

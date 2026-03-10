@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.aufmass.test"
-4    android:versionCode="34"
-5    android:versionName="4.14.0-BT" >
+4    android:versionCode="35"
+5    android:versionName="3.14.3" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
@@ -101,7 +101,7 @@
 54
 55    <application
 55-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:24:5-53:19
-56        android:name="com.aufmass.app.AufmassApplication"
+56        android:name="com.aufmass.test.AufmassApplication"
 56-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:25:9-43
 57        android:allowBackup="true"
 57-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:26:9-35
@@ -121,7 +121,7 @@
 65-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:31:9-48
 66        <activity
 66-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:32:9-42:20
-67            android:name="com.aufmass.app.ui.MainActivity"
+67            android:name="com.aufmass.test.ui.MainActivity"
 67-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:33:13-44
 68            android:configChanges="orientation|screenSize|keyboardHidden"
 68-->/var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:36:13-74

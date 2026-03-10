@@ -111,26 +111,67 @@ fun RaeumeScreen(
         }
     }
 
+    // Focus-Tracking für Länge
+    fun onLaengeFocused(focused: Boolean) {
+        if (focused) {
+            measurementHandler.setFocusedField(BluetoothMeasurementHandler.MeasurementField.LENGTH)
+        } else if (measurementHandler.getCurrentField() == BluetoothMeasurementHandler.MeasurementField.LENGTH) {
+            // Nur aufheben wenn kein anderes Feld gerade fokussiert wird
+        }
+    }
+
+    // Focus-Tracking für Breite
+    fun onBreiteFocused(focused: Boolean) {
+        if (focused) {
+            measurementHandler.setFocusedField(BluetoothMeasurementHandler.MeasurementField.WIDTH)
+        }
+    }
+
     LaunchedEffect(bluetoothManager.lastMeasurement) {
         bluetoothManager.lastMeasurement.observeForever { measurement ->
-            if (measurement != null && measurementHandler.isAutoJumpEnabled()) {
-                lastMeasurement = measurement.value
-                val field = measurementHandler.onMeasurementReceived(measurement.value)
+            if (measurement != null) {
+                val result = measurementHandler.onMeasurementReceived(measurement.value)
                 
-                when (field) {
-                    BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
-                        if (laenge.isBlank()) {
-                            laenge = NumberFormatter.formatDecimal(measurement.value)
-                            editTextLaenge.value?.apply { post { requestFocus() } }
+                when (result) {
+                    is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
+                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        when (measurementHandler.getCurrentField()) {
+                            BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
+                                if (laenge.isBlank()) {
+                                    laenge = formatted
+                                }
+                            }
+                            BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
+                                if (breite.isBlank()) {
+                                    breite = formatted
+                                }
+                            }
+                            else -> {}
                         }
                     }
-                    BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
-                        breite = NumberFormatter.formatDecimal(measurement.value)
-                        editTextBreite.value?.apply { post { requestFocus() } }
+                    is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
+                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        when (result.field) {
+                            BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
+                                breite = formatted
+                                editTextBreite.value?.apply { post { requestFocus() } }
+                            }
+                            BluetoothMeasurementHandler.MeasurementField.HEIGHT -> {
+                                // Nicht relevant für Räume
+                            }
+                            else -> {}
+                        }
+                    }
+                    is BluetoothMeasurementHandler.MeasurementResult.CloseKeyboard -> {
+                        // Wert bleibt stehen, Tastatur schließen, Focus aufheben
+                        keyboardController?.hide()
+                        focusManager.clearFocus()
+                        measurementHandler.clearFocusedField()
                     }
                     else -> {}
                 }
-            } else if (measurement != null) {
+
+                // Wert anzeigen
                 lastMeasurement = measurement.value
             }
         }
@@ -400,6 +441,7 @@ fun RaeumeScreen(
                             imeAction = android.view.inputmethod.EditorInfo.IME_ACTION_NEXT,
                             onImeNext = { editTextBreite.value?.apply { post { requestFocus() } } },
                             onViewCreated = { editTextLaenge.value = it },
+                            onFocus = { focused -> onLaengeFocused(focused) },
                             modifier = Modifier.weight(1f)
                         )
                         StylusEditText(
@@ -411,6 +453,7 @@ fun RaeumeScreen(
                             imeAction = android.view.inputmethod.EditorInfo.IME_ACTION_NEXT,
                             onImeNext = { editTextNotizen.value?.apply { post { requestFocus() } } },
                             onViewCreated = { editTextBreite.value = it },
+                            onFocus = { focused -> onBreiteFocused(focused) },
                             modifier = Modifier.weight(1f)
                         )
                     }

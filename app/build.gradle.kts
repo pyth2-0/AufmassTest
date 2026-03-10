@@ -5,15 +5,15 @@ plugins {
 }
 
 android {
-    namespace = "com.aufmass.app"
+    namespace = "com.aufmass.test"
     compileSdk = 34
 
     defaultConfig {
         applicationId = "com.aufmass.test"
         minSdk = 26
         targetSdk = 34
-        versionCode = 34
-        versionName = "4.14.0-BT"
+        versionCode = 35
+        versionName = "3.14.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

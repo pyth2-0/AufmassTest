@@ -11,6 +11,9 @@ class BluetoothSettingsManager(context: Context) {
         private const val KEY_AUTO_JUMP = "auto_jump"
         private const val KEY_AUTO_CONNECT = "auto_connect"
         private const val KEY_LAST_DEVICE_NAME = "last_device_name"
+        private const val KEY_RECONNECT_INTERVAL = "reconnect_interval"
+        private const val KEY_LAST_CONNECTION_ATTEMPT = "last_connection_attempt"
+        private const val KEY_BLUETOOTH_ENABLED = "bluetooth_enabled"
 
         @Volatile
         private var instance: BluetoothSettingsManager? = null
@@ -35,6 +38,18 @@ class BluetoothSettingsManager(context: Context) {
     var autoConnect: Boolean
         get() = prefs.getBoolean(KEY_AUTO_CONNECT, false)
         set(value) = prefs.edit().putBoolean(KEY_AUTO_CONNECT, value).apply()
+
+    var bluetoothEnabled: Boolean
+        get() = prefs.getBoolean(KEY_BLUETOOTH_ENABLED, true)
+        set(value) = prefs.edit().putBoolean(KEY_BLUETOOTH_ENABLED, value).apply()
+
+    var reconnectIntervalMs: Long
+        get() = prefs.getLong(KEY_RECONNECT_INTERVAL, 30000L) // Default 30 seconds
+        set(value) = prefs.edit().putLong(KEY_RECONNECT_INTERVAL, value).apply()
+
+    var lastConnectionAttempt: Long
+        get() = prefs.getLong(KEY_LAST_CONNECTION_ATTEMPT, 0L)
+        set(value) = prefs.edit().putLong(KEY_LAST_CONNECTION_ATTEMPT, value).apply()
 
     var lastDeviceName: String
         get() = prefs.getString(KEY_LAST_DEVICE_NAME, "") ?: ""

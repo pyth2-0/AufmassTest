@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aufmass.test"
-    android:versionCode="34"
-    android:versionName="4.14.0-BT" >
+    android:versionCode="35"
+    android:versionName="3.14.3" >
 
     <uses-sdk
         android:minSdkVersion="26"
@@ -53,7 +53,7 @@
     <uses-permission android:name="com.aufmass.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
-        android:name="com.aufmass.app.AufmassApplication"
+        android:name="com.aufmass.test.AufmassApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -64,7 +64,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AufmassApp" >
         <activity
-            android:name="com.aufmass.app.ui.MainActivity"
+            android:name="com.aufmass.test.ui.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:enableOnBackInvokedCallback="true"
             android:exported="true"

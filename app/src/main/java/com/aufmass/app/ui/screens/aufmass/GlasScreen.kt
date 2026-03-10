@@ -25,6 +25,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -55,6 +56,7 @@ fun GlasScreen(
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
     
     val glasarten by glasartRepository.getAllGlasarten().collectAsState(initial = emptyList())
     val glasList by glasRepository.getGlasByAufmassId(aufmassId).collectAsState(initial = emptyList())
@@ -87,26 +89,60 @@ fun GlasScreen(
         }
     }
 
+    // Focus-Tracking für Breite
+    fun onBreiteFocused(focused: Boolean) {
+        if (focused) {
+            measurementHandler.setFocusedField(BluetoothMeasurementHandler.MeasurementField.WIDTH)
+        }
+    }
+
+    // Focus-Tracking für Höhe
+    fun onHoeheFocused(focused: Boolean) {
+        if (focused) {
+            measurementHandler.setFocusedField(BluetoothMeasurementHandler.MeasurementField.HEIGHT)
+        }
+    }
+
     LaunchedEffect(bluetoothManager.lastMeasurement) {
         bluetoothManager.lastMeasurement.observeForever { measurement ->
-            if (measurement != null && measurementHandler.isAutoJumpEnabled()) {
-                lastMeasurement = measurement.value
-                val field = measurementHandler.onMeasurementReceived(measurement.value)
+            if (measurement != null) {
+                val result = measurementHandler.onMeasurementReceived(measurement.value)
                 
-                when (field) {
-                    BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
-                        if (breite.isBlank()) {
-                            breite = NumberFormatter.formatDecimal(measurement.value)
-                            editTextBreite.value?.apply { post { requestFocus() } }
+                when (result) {
+                    is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
+                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        when (measurementHandler.getCurrentField()) {
+                            BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
+                                if (breite.isBlank()) {
+                                    breite = formatted
+                                }
+                            }
+                            BluetoothMeasurementHandler.MeasurementField.HEIGHT -> {
+                                if (hoehe.isBlank()) {
+                                    hoehe = formatted
+                                }
+                            }
+                            else -> {}
                         }
                     }
-                    BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
-                        hoehe = NumberFormatter.formatDecimal(measurement.value)
-                        editTextHoehe.value?.apply { post { requestFocus() } }
+                    is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
+                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        when (result.field) {
+                            BluetoothMeasurementHandler.MeasurementField.HEIGHT -> {
+                                hoehe = formatted
+                                editTextHoehe.value?.apply { post { requestFocus() } }
+                            }
+                            else -> {}
+                        }
+                    }
+                    is BluetoothMeasurementHandler.MeasurementResult.CloseKeyboard -> {
+                        keyboardController?.hide()
+                        focusManager.clearFocus()
+                        measurementHandler.clearFocusedField()
                     }
                     else -> {}
                 }
-            } else if (measurement != null) {
+
                 lastMeasurement = measurement.value
             }
         }
@@ -265,6 +301,7 @@ fun GlasScreen(
                             imeAction = android.view.inputmethod.EditorInfo.IME_ACTION_NEXT,
                             onImeNext = { editTextHoehe.value?.apply { post { requestFocus() } } },
                             onViewCreated = { editTextBreite.value = it },
+                            onFocus = { focused -> onBreiteFocused(focused) },
                             modifier = Modifier.weight(1f)
                         )
                         StylusEditText(value = hoehe, onValueChange = { hoehe = it },
@@ -274,6 +311,7 @@ fun GlasScreen(
                             imeAction = android.view.inputmethod.EditorInfo.IME_ACTION_NEXT,
                             onImeNext = { editTextNotizen.value?.apply { post { requestFocus() } } },
                             onViewCreated = { editTextHoehe.value = it },
+                            onFocus = { focused -> onHoeheFocused(focused) },
                             modifier = Modifier.weight(1f)
                         )
                     }

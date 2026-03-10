@@ -25,6 +25,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -52,6 +53,7 @@ fun BodenSeScreen(
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
     
     val bodenSeList by bodenSeRepository.getBodenSeByAufmassId(aufmassId).collectAsState(initial = emptyList())
 
@@ -83,26 +85,60 @@ fun BodenSeScreen(
         }
     }
 
+    // Focus-Tracking für Länge
+    fun onLaengeFocused(focused: Boolean) {
+        if (focused) {
+            measurementHandler.setFocusedField(BluetoothMeasurementHandler.MeasurementField.LENGTH)
+        }
+    }
+
+    // Focus-Tracking für Breite
+    fun onBreiteFocused(focused: Boolean) {
+        if (focused) {
+            measurementHandler.setFocusedField(BluetoothMeasurementHandler.MeasurementField.WIDTH)
+        }
+    }
+
     LaunchedEffect(bluetoothManager.lastMeasurement) {
         bluetoothManager.lastMeasurement.observeForever { measurement ->
-            if (measurement != null && measurementHandler.isAutoJumpEnabled()) {
-                lastMeasurement = measurement.value
-                val field = measurementHandler.onMeasurementReceived(measurement.value)
+            if (measurement != null) {
+                val result = measurementHandler.onMeasurementReceived(measurement.value)
                 
-                when (field) {
-                    BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
-                        if (laenge.isBlank()) {
-                            laenge = NumberFormatter.formatDecimal(measurement.value)
-                            editTextLaenge.value?.apply { post { requestFocus() } }
+                when (result) {
+                    is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
+                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        when (measurementHandler.getCurrentField()) {
+                            BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
+                                if (laenge.isBlank()) {
+                                    laenge = formatted
+                                }
+                            }
+                            BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
+                                if (breite.isBlank()) {
+                                    breite = formatted
+                                }
+                            }
+                            else -> {}
                         }
                     }
-                    BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
-                        breite = NumberFormatter.formatDecimal(measurement.value)
-                        editTextBreite.value?.apply { post { requestFocus() } }
+                    is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
+                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        when (result.field) {
+                            BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
+                                breite = formatted
+                                editTextBreite.value?.apply { post { requestFocus() } }
+                            }
+                            else -> {}
+                        }
+                    }
+                    is BluetoothMeasurementHandler.MeasurementResult.CloseKeyboard -> {
+                        keyboardController?.hide()
+                        focusManager.clearFocus()
+                        measurementHandler.clearFocusedField()
                     }
                     else -> {}
                 }
-            } else if (measurement != null) {
+
                 lastMeasurement = measurement.value
             }
         }
@@ -254,7 +290,8 @@ fun BodenSeScreen(
                             allowComma = true,
                             imeAction = android.view.inputmethod.EditorInfo.IME_ACTION_NEXT,
                             onImeNext = { editTextBreite.value?.apply { post { requestFocus() } } },
-                            onViewCreated = { editTextLaenge.value = it }
+                            onViewCreated = { editTextLaenge.value = it },
+                            onFocus = { focused -> onLaengeFocused(focused) }
                         )
                         StylusEditText(value = breite, onValueChange = { breite = it },
                             label = "Breite (m) *", modifier = Modifier.weight(1f),
@@ -262,7 +299,8 @@ fun BodenSeScreen(
                             allowComma = true,
                             imeAction = android.view.inputmethod.EditorInfo.IME_ACTION_NEXT,
                             onImeNext = { editTextNotizen.value?.apply { post { requestFocus() } } },
-                            onViewCreated = { editTextBreite.value = it }
+                            onViewCreated = { editTextBreite.value = it },
+                            onFocus = { focused -> onBreiteFocused(focused) }
                         )
                     }
 

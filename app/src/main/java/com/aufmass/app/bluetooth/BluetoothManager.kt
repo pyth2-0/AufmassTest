@@ -1,6 +1,8 @@
 package com.aufmass.app.bluetooth
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -19,6 +21,8 @@ class BluetoothManager(context: Context) {
 
     private val settingsManager = BluetoothSettingsManager.getInstance(context)
     private val distoService = DistoBleService(context)
+    private val handler = Handler(Looper.getMainLooper())
+    private var reconnectRunnable: Runnable? = null
 
     private val _connectionState = MutableLiveData<ConnectionState>(ConnectionState.Disconnected)
     val connectionState: LiveData<ConnectionState> = _connectionState
@@ -60,18 +64,24 @@ class BluetoothManager(context: Context) {
 
             override fun onConnecting(deviceName: String) {
                 _connectionState.postValue(ConnectionState.Connecting)
+                settingsManager.lastConnectionAttempt = System.currentTimeMillis()
                 addLog("Verbinde mit $deviceName...")
             }
 
             override fun onConnected(deviceName: String) {
                 _connectionState.postValue(ConnectionState.Connected)
                 settingsManager.lastDeviceName = deviceName
+                settingsManager.lastConnectionAttempt = 0
+                stopAutoReconnect()
                 addLog("Verbunden mit $deviceName")
             }
 
             override fun onDisconnected() {
                 _connectionState.postValue(ConnectionState.Disconnected)
                 addLog("Getrennt")
+                if (settingsManager.autoConnect && settingsManager.bluetoothEnabled) {
+                    scheduleReconnect()
+                }
             }
 
             override fun onMeasurementReceived(measurement: DistoDataParser.DistoMeasurement) {
@@ -83,6 +93,9 @@ class BluetoothManager(context: Context) {
             override fun onError(message: String) {
                 _connectionState.postValue(ConnectionState.Error)
                 addLog("Fehler: $message")
+                if (settingsManager.autoConnect && settingsManager.bluetoothEnabled) {
+                    scheduleReconnect()
+                }
             }
 
             override fun onLog(message: String) {
@@ -102,6 +115,10 @@ class BluetoothManager(context: Context) {
     fun isConnected(): Boolean = _connectionState.value == ConnectionState.Connected
 
     fun startScan() {
+        if (!settingsManager.bluetoothEnabled) {
+            addLog("Bluetooth ist deaktiviert")
+            return
+        }
         if (!isBluetoothEnabled()) {
             addLog("Bluetooth ist nicht eingeschaltet")
             return
@@ -115,7 +132,12 @@ class BluetoothManager(context: Context) {
     }
 
     fun connectToDevice(address: String) {
+        if (!settingsManager.bluetoothEnabled) {
+            addLog("Bluetooth ist deaktiviert")
+            return
+        }
         settingsManager.macAddress = address
+        settingsManager.lastConnectionAttempt = System.currentTimeMillis()
         _measurementCount.postValue(0)
         distoService.connectByAddress(address)
     }
@@ -130,7 +152,76 @@ class BluetoothManager(context: Context) {
     }
 
     fun disconnect() {
+        stopAutoReconnect()
         distoService.disconnect()
+    }
+
+    fun startAutoReconnect() {
+        if (!settingsManager.autoConnect || !settingsManager.bluetoothEnabled) {
+            return
+        }
+        scheduleReconnect()
+    }
+
+    fun stopAutoReconnect() {
+        reconnectRunnable?.let { handler.removeCallbacks(it) }
+        reconnectRunnable = null
+    }
+
+    private fun scheduleReconnect() {
+        if (!settingsManager.autoConnect || !settingsManager.bluetoothEnabled) {
+            return
+        }
+        if (!isBluetoothEnabled()) {
+            addLog("Bluetooth aus - kein Reconnect")
+            return
+        }
+
+        reconnectRunnable?.let { handler.removeCallbacks(it) }
+
+        val interval = settingsManager.reconnectIntervalMs
+        val lastAttempt = settingsManager.lastConnectionAttempt
+        val now = System.currentTimeMillis()
+
+        // If we're not connected, try immediately if enough time has passed
+        if (now - lastAttempt >= interval || lastAttempt == 0L) {
+            addLog("Auto-Reconnect wird gestartet...")
+            reconnectRunnable = Runnable {
+                if (!isConnected() && settingsManager.bluetoothEnabled) {
+                    connectToSavedDevice()
+                }
+            }
+            handler.postDelayed(reconnectRunnable!!, 1000) // Small delay before attempting
+        } else {
+            // Schedule for later
+            val delay = interval - (now - lastAttempt)
+            addLog("Nächster Reconnect in ${delay/1000}s...")
+            reconnectRunnable = Runnable {
+                if (!isConnected() && settingsManager.bluetoothEnabled) {
+                    connectToSavedDevice()
+                }
+            }
+            handler.postDelayed(reconnectRunnable!!, delay)
+        }
+    }
+
+    fun startPeriodicReconnect() {
+        if (!settingsManager.autoConnect || !settingsManager.bluetoothEnabled) {
+            return
+        }
+        
+        reconnectRunnable?.let { handler.removeCallbacks(it) }
+        
+        reconnectRunnable = object : Runnable {
+            override fun run() {
+                if (!isConnected() && settingsManager.bluetoothEnabled && settingsManager.autoConnect) {
+                    addLog("Periodischer Reconnect...")
+                    connectToSavedDevice()
+                }
+                handler.postDelayed(this, settingsManager.reconnectIntervalMs)
+            }
+        }
+        handler.postDelayed(reconnectRunnable!!, settingsManager.reconnectIntervalMs)
     }
 
     fun clearMeasurementCount() {
@@ -140,4 +231,6 @@ class BluetoothManager(context: Context) {
     fun clearLogs() {
         _logMessages.postValue(emptyList())
     }
+
+    fun isBluetoothFeatureEnabled(): Boolean = settingsManager.bluetoothEnabled
 }
