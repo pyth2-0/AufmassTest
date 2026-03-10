@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.aufmass.test"
+    namespace = "com.aufmass.app"
     compileSdk = 34
 
     defaultConfig {

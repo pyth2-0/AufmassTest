@@ -231,7 +231,7 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /var/home/bazzite/.gradle/c
 		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:31:9-48
 	android:name
 		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:25:9-43
-activity#com.aufmass.test.ui.MainActivity
+activity#com.aufmass.app.ui.MainActivity
 ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:32:9-42:20
 	android:windowSoftInputMode
 		ADDED from /var/home/bazzite/aufmassapp/app/src/main/AndroidManifest.xml:35:13-68

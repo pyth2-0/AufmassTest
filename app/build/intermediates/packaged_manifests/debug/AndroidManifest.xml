@@ -53,7 +53,7 @@
     <uses-permission android:name="com.aufmass.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
-        android:name="com.aufmass.test.AufmassApplication"
+        android:name="com.aufmass.app.AufmassApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -64,7 +64,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AufmassApp" >
         <activity
-            android:name="com.aufmass.test.ui.MainActivity"
+            android:name="com.aufmass.app.ui.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:enableOnBackInvokedCallback="true"
             android:exported="true"

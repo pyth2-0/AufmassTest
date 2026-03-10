@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.aufmass.test.app-mergeDebugResources-65:/values-hi/values-hi.xml",
+            "outputFile": "com.aufmass.app-mergeDebugResources-65:/values-hi/values-hi.xml",
             "map": [
                 {
                     "source": "/var/home/bazzite/.gradle/caches/transforms-3/fc3d22e10ed569615e5fcec3f0098a93/transformed/core-1.12.0/res/values-hi/values-hi.xml",
