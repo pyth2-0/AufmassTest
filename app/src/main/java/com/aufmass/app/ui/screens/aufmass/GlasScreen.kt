@@ -131,10 +131,10 @@ fun GlasScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
-                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        // Nur springen, NICHT erneut eintragen
                         when (result.field) {
                             BluetoothMeasurementHandler.MeasurementField.HEIGHT -> {
-                                hoehe = formatted
+                                // Höhe-Feld fokussieren (Wert bleibt vom ersten Mal stehen)
                                 editTextHoehe.value?.apply { post { requestFocus() } }
                             }
                             else -> {}

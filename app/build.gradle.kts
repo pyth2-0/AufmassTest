@@ -12,8 +12,8 @@ android {
         applicationId = "com.aufmass.test"
         minSdk = 26
         targetSdk = 34
-        versionCode = 35
-        versionName = "3.14.3"
+        versionCode = 36
+        versionName = "4.14.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

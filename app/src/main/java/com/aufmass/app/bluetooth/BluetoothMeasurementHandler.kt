@@ -93,23 +93,21 @@ class BluetoothMeasurementHandler(context: Context) {
         val isRepeated = lastProcessedValue != null && abs(lastProcessedValue!! - roundedValue) < 0.0001
 
         return if (isRepeated) {
-            // Wert ist identisch mit letztem - soll Springen auslösen
+            // Wert ist identisch mit letztem - NUR springen, NICHT erneut eintragen!
             val currentField = focusedField
             val nextField = getNextField(currentField)
 
             if (nextField != MeasurementField.NONE) {
-                // Es gibt ein nächstes Feld - dahin springen
+                // Es gibt ein nächstes Feld - dahin springen, aber Wert NICHT eintragen
                 _currentField.value = nextField
                 focusedField = nextField
-                lastProcessedValue = roundedValue
-                _pendingValue.value = roundedValue
-                MeasurementResult.JumpToField(nextField, roundedValue)
-            } else {
-                // Kein weiteres Feld - Wert bleibt stehen, kein Focus mehr
                 lastProcessedValue = null // Reset für nächsten Durchgang
+                MeasurementResult.JumpToField(nextField, null)
+            } else {
+                // Kein weiteres Feld - kein Focus mehr
+                lastProcessedValue = null
                 focusedField = MeasurementField.NONE
                 _currentField.value = MeasurementField.NONE
-                _pendingValue.value = roundedValue
                 MeasurementResult.CloseKeyboard
             }
         } else {
@@ -143,7 +141,7 @@ class BluetoothMeasurementHandler(context: Context) {
         object Ignored : MeasurementResult() // Keine Aktion
         object ShowOnly : MeasurementResult() // Nur anzeigen, nicht eintragen
         data class InsertValue(val value: Double) : MeasurementResult() // Wert eintragen
-        data class JumpToField(val field: MeasurementField, val value: Double) : MeasurementResult() // Wert eintragen und springen
+        data class JumpToField(val field: MeasurementField, val value: Double?) : MeasurementResult() // Springen (optional mit Wert)
         object CloseKeyboard : MeasurementResult() // Wert bleibt, Tastatur schließen, Focus aufheben
     }
 }

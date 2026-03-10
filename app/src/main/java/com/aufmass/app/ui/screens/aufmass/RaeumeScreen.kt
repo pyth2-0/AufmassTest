@@ -155,14 +155,11 @@ fun RaeumeScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
-                        val formatted = measurementHandler.formatMeasurement(result.value)
+                        // Nur springen, NICHT erneut eintragen
                         when (result.field) {
                             BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
-                                breite = formatted
+                                // Breite-Feld fokussieren (Wert bleibt vom ersten Mal stehen)
                                 editTextBreite.value?.apply { post { requestFocus() } }
-                            }
-                            BluetoothMeasurementHandler.MeasurementField.HEIGHT -> {
-                                // Nicht relevant für Räume
                             }
                             else -> {}
                         }
