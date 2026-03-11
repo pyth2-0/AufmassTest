@@ -784,15 +784,22 @@ fun BluetoothSettingsTab() {
                     value = macAddress,
                     onValueChange = { 
                         macAddress = it.uppercase()
-                        settingsManager.macAddress = macAddress
                     },
                     label = { Text("MAC-Adresse") },
                     placeholder = { Text("D4:40:1D:EB:BF:5D") },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
                     trailingIcon = {
-                        IconButton(onClick = { reloadSettings() }) {
-                            Icon(Icons.Default.Refresh, contentDescription = "Neu laden")
+                        Row {
+                            IconButton(onClick = { 
+                                settingsManager.macAddress = macAddress
+                                Toast.makeText(context, "MAC-Adresse gespeichert", Toast.LENGTH_SHORT).show()
+                            }) {
+                                Icon(Icons.Default.Save, contentDescription = "Speichern")
+                            }
+                            IconButton(onClick = { reloadSettings() }) {
+                                Icon(Icons.Default.Refresh, contentDescription = "Neu laden")
+                            }
                         }
                     }
                 )
