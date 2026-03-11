@@ -664,6 +664,18 @@ fun BluetoothSettingsTab() {
     var autoJump by remember { mutableStateOf(settingsManager.autoJump) }
     var autoConnect by remember { mutableStateOf(settingsManager.autoConnect) }
 
+    // Einstellungen neu laden
+    fun reloadSettings() {
+        macAddress = settingsManager.macAddress
+        autoJump = settingsManager.autoJump
+        autoConnect = settingsManager.autoConnect
+    }
+
+    // Beim Öffnen Einstellungen laden
+    LaunchedEffect(Unit) {
+        reloadSettings()
+    }
+
     var connectionState by remember { mutableStateOf(BluetoothManager.ConnectionState.Disconnected) }
     var isScanning by remember { mutableStateOf(false) }
     var logs by remember { mutableStateOf<List<String>>(emptyList()) }
@@ -776,7 +788,12 @@ fun BluetoothSettingsTab() {
                     label = { Text("MAC-Adresse") },
                     placeholder = { Text("D4:40:1D:EB:BF:5D") },
                     modifier = Modifier.fillMaxWidth(),
-                    singleLine = true
+                    singleLine = true,
+                    trailingIcon = {
+                        IconButton(onClick = { reloadSettings() }) {
+                            Icon(Icons.Default.Refresh, contentDescription = "Neu laden")
+                        }
+                    }
                 )
 
                 Row(
