@@ -111,7 +111,7 @@ fun BodenSeScreen(
                 
                 when (result) {
                     is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
-                        // Wert immer eintragen/aktualisieren
+                        keyboardController?.hide()
                         val formatted = measurementHandler.formatMeasurement(result.value)
                         when (measurementHandler.getCurrentField()) {
                             BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
@@ -124,10 +124,9 @@ fun BodenSeScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
-                        // Nur springen, NICHT erneut eintragen
+                        keyboardController?.hide()
                         when (result.field) {
                             BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
-                                // Breite-Feld fokussieren (Wert bleibt vom ersten Mal stehen)
                                 editTextBreite.value?.apply { post { requestFocus() } }
                             }
                             else -> {}

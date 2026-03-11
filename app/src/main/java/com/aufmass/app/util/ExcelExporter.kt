@@ -89,37 +89,37 @@ class ExcelExporter(private val context: Context) {
             row.getCell(7)?.setCellValue(rhythmusValue)
             
             if (row.getCell(8) == null) row.createCell(8)
-            row.getCell(8)?.setCellFormula("=\$I\$24")
+            row.getCell(8)?.setCellFormula("\$I\$24")
             
             if (row.getCell(9) == null) row.createCell(9)
-            val totalFormula = "=IFERROR((F$rowNum/G$rowNum*I$rowNum*H$rowNum),\"\")"
+            val totalFormula = "IFERROR((F$rowNum/G$rowNum*I$rowNum*H$rowNum),\"\")"
             row.getCell(9)?.setCellFormula(totalFormula)
             
             if (row.getCell(10) == null) row.createCell(10)
-            val timeFormula = "=IFERROR((F$rowNum/G$rowNum),\"\")"
+            val timeFormula = "IFERROR((F$rowNum/G$rowNum),\"\")"
             row.getCell(10)?.setCellFormula(timeFormula)
             
             for (dayCol in 11..16) {
                 if (row.getCell(dayCol) == null) row.createCell(dayCol)
-                row.getCell(dayCol)?.setCellFormula("=\$K$rowNum")
+                row.getCell(dayCol)?.setCellFormula("\$K$rowNum")
             }
             if (row.getCell(16) == null) row.createCell(16)
-            row.getCell(16)?.setCellFormula("=\$K$rowNum")
+            row.getCell(16)?.setCellFormula("\$K$rowNum")
             
             rowNum++
         }
         
         val totalRow = sheet.getRow(28) ?: sheet.createRow(28)
-        totalRow.getCell(5)?.setCellFormula("=SUM(F$rowStart:F${rowNum - 1})")
-        totalRow.getCell(9)?.setCellFormula("=SUM(J$rowStart:J${rowNum - 1})")
-        totalRow.getCell(10)?.setCellFormula("=SUM(K$rowStart:K${rowNum - 1})")
+        totalRow.getCell(5)?.setCellFormula("SUM(F$rowStart:F${rowNum - 1})")
+        totalRow.getCell(9)?.setCellFormula("SUM(J$rowStart:J${rowNum - 1})")
+        totalRow.getCell(10)?.setCellFormula("SUM(K$rowStart:K${rowNum - 1})")
         
-        totalRow.getCell(11)?.setCellFormula("=SUM(L$rowStart:L${rowNum - 1})")
-        totalRow.getCell(12)?.setCellFormula("=SUM(M$rowStart:M${rowNum - 1})")
-        totalRow.getCell(13)?.setCellFormula("=SUM(N$rowStart:N${rowNum - 1})")
-        totalRow.getCell(14)?.setCellFormula("=SUM(O$rowStart:O${rowNum - 1})")
-        totalRow.getCell(15)?.setCellFormula("=SUM(P$rowStart:P${rowNum - 1})")
-        totalRow.getCell(16)?.setCellFormula("=SUM(Q$rowStart:Q${rowNum - 1})")
+        totalRow.getCell(11)?.setCellFormula("SUM(L$rowStart:L${rowNum - 1})")
+        totalRow.getCell(12)?.setCellFormula("SUM(M$rowStart:M${rowNum - 1})")
+        totalRow.getCell(13)?.setCellFormula("SUM(N$rowStart:N${rowNum - 1})")
+        totalRow.getCell(14)?.setCellFormula("SUM(O$rowStart:O${rowNum - 1})")
+        totalRow.getCell(15)?.setCellFormula("SUM(P$rowStart:P${rowNum - 1})")
+        totalRow.getCell(16)?.setCellFormula("SUM(Q$rowStart:Q${rowNum - 1})")
     }
 
     private fun fillAufmassBodenSheet(workbook: Workbook, bodenSeList: List<BodenSeEntity>) {
@@ -150,18 +150,18 @@ class ExcelExporter(private val context: Context) {
             row.getCell(5)?.setCellValue(bodenSe.breite)
             
             if (row.getCell(6) == null) row.createCell(6)
-            row.getCell(6)?.setCellFormula("=E$rowNum*F$rowNum")
+            row.getCell(6)?.setCellFormula("E$rowNum*F$rowNum")
             
             if (row.getCell(7) == null) row.createCell(7)
-            row.getCell(7)?.setCellFormula("=D$rowNum*G$rowNum")
+            row.getCell(7)?.setCellFormula("D$rowNum*G$rowNum")
             
             rowNum++
         }
         
         val sumRow = sheet.getRow(20) ?: sheet.createRow(20)
-        sumRow.getCell(7)?.setCellFormula("=SUM(H$rowStart:H${rowNum - 1})")
-        sumRow.getCell(9)?.setCellFormula("=SUM(J$rowStart:J${rowNum - 1})")
-        sumRow.getCell(11)?.setCellFormula("=SUM(L$rowStart:L${rowNum - 1})")
+        sumRow.getCell(7)?.setCellFormula("SUM(H$rowStart:H${rowNum - 1})")
+        sumRow.getCell(9)?.setCellFormula("SUM(J$rowStart:J${rowNum - 1})")
+        sumRow.getCell(11)?.setCellFormula("SUM(L$rowStart:L${rowNum - 1})")
     }
 
     private fun fillLeistungsverzeichnisSheet(
