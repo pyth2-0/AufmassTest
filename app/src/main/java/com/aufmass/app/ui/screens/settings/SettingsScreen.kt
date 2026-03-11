@@ -29,6 +29,8 @@ import com.aufmass.app.bluetooth.BluetoothSettingsManager
 import com.aufmass.app.data.local.entity.*
 import com.aufmass.app.ui.components.StylusEditText
 import com.aufmass.app.util.NumberFormatter
+import com.aufmass.app.util.SettingsExportImportManager
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +40,7 @@ fun SettingsScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Raumarten", "Rhythmen", "Bodenbeläge", "Glasarten", "LV", "Bluetooth")
+    val tabs = listOf("Raumarten", "Rhythmen", "Bodenbeläge", "Glasarten", "LV", "Bluetooth", "Backup")
 
     Scaffold(
         topBar = {
@@ -66,6 +68,7 @@ fun SettingsScreen(
                 3 -> GlasartenEditableTab(uiState, viewModel)
                 4 -> LvEditableTab(uiState, viewModel)
                 5 -> BluetoothSettingsTab()
+                6 -> BackupSettingsTab(uiState, viewModel)
             }
         }
     }
@@ -315,18 +318,25 @@ fun BodenbelageEditableTab(uiState: SettingsUiState, viewModel: SettingsViewMode
     var editingBodenbelag by remember { mutableStateOf<BodenbelagEntity?>(null) }
     var bezeichnung by remember { mutableStateOf("") }
     var abkuerzung by remember { mutableStateOf("") }
+    var quadratmeterSchnitt by remember { mutableStateOf("") }
 
     Column(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.weight(1f), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             items(uiState.bodenbelage) { bodenbelag ->
                 ListItem(
                     headlineContent = { Text("${bodenbelag.bezeichnung} (${bodenbelag.abkuerzung})") },
+                    supportingContent = { 
+                        if (bodenbelag.quadratmeterSchnitt > 0) {
+                            Text("m² Schnitt: +${bodenbelag.quadratmeterSchnitt}")
+                        }
+                    },
                     trailingContent = {
                         Row {
                             IconButton(onClick = {
                                 editingBodenbelag = bodenbelag
                                 bezeichnung = bodenbelag.bezeichnung
                                 abkuerzung = bodenbelag.abkuerzung
+                                quadratmeterSchnitt = if (bodenbelag.quadratmeterSchnitt > 0) bodenbelag.quadratmeterSchnitt.toString() else ""
                                 showEditDialog = true
                             }) {
                                 Icon(Icons.Default.Edit, "Bearbeiten")
@@ -346,7 +356,12 @@ fun BodenbelageEditableTab(uiState: SettingsUiState, viewModel: SettingsViewMode
 
     if (showDialog) {
         AlertDialog(
-            onDismissRequest = { showDialog = false },
+            onDismissRequest = { 
+                showDialog = false
+                bezeichnung = ""
+                abkuerzung = ""
+                quadratmeterSchnitt = ""
+            },
             title = { Text("Bodenbelag hinzufügen") },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -354,15 +369,19 @@ fun BodenbelageEditableTab(uiState: SettingsUiState, viewModel: SettingsViewMode
                     StylusEditText(value = bezeichnung, onValueChange = { bezeichnung = it }, label = "z.B. PVC", modifier = Modifier.fillMaxWidth())
                     Text("Abkürzung:", style = MaterialTheme.typography.labelMedium)
                     StylusEditText(value = abkuerzung, onValueChange = { abkuerzung = it }, label = "z.B. PVC", modifier = Modifier.fillMaxWidth())
+                    Text("m² Schnitt (optional):", style = MaterialTheme.typography.labelMedium)
+                    StylusEditText(value = quadratmeterSchnitt, onValueChange = { quadratmeterSchnitt = it }, label = "z.B. 10", modifier = Modifier.fillMaxWidth())
                 }
             },
             confirmButton = {
                 TextButton(onClick = {
                     if (bezeichnung.isNotBlank() && abkuerzung.isNotBlank()) {
-                        viewModel.addBodenbelag(bezeichnung, abkuerzung)
+                        val schnitt = quadratmeterSchnitt.toDoubleOrNull() ?: 0.0
+                        viewModel.addBodenbelag(bezeichnung, abkuerzung, schnitt)
                         showDialog = false
                         bezeichnung = ""
                         abkuerzung = ""
+                        quadratmeterSchnitt = ""
                     }
                 }) { Text("Speichern") }
             },
@@ -374,7 +393,12 @@ fun BodenbelageEditableTab(uiState: SettingsUiState, viewModel: SettingsViewMode
 
     if (showEditDialog && editingBodenbelag != null) {
         AlertDialog(
-            onDismissRequest = { showEditDialog = false },
+            onDismissRequest = { 
+                showEditDialog = false
+                bezeichnung = ""
+                abkuerzung = ""
+                quadratmeterSchnitt = ""
+            },
             title = { Text("Bodenbelag bearbeiten") },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -382,16 +406,23 @@ fun BodenbelageEditableTab(uiState: SettingsUiState, viewModel: SettingsViewMode
                     StylusEditText(value = bezeichnung, onValueChange = { bezeichnung = it }, label = bezeichnung.ifEmpty { "z.B. PVC" }, modifier = Modifier.fillMaxWidth())
                     Text("Abkürzung:", style = MaterialTheme.typography.labelMedium)
                     StylusEditText(value = abkuerzung, onValueChange = { abkuerzung = it }, label = abkuerzung.ifEmpty { "z.B. PVC" }, modifier = Modifier.fillMaxWidth())
+                    Text("m² Schnitt (optional):", style = MaterialTheme.typography.labelMedium)
+                    StylusEditText(value = quadratmeterSchnitt, onValueChange = { quadratmeterSchnitt = it }, label = "z.B. 10", modifier = Modifier.fillMaxWidth())
                 }
             },
             confirmButton = {
                 TextButton(onClick = {
                     if (bezeichnung.isNotBlank() && abkuerzung.isNotBlank()) {
-                        viewModel.updateBodenbelag(editingBodenbelag!!.copy(bezeichnung = bezeichnung, abkuerzung = abkuerzung))
+                        val schnitt = quadratmeterSchnitt.toDoubleOrNull() ?: 0.0
+                        viewModel.updateBodenbelag(editingBodenbelag!!.copy(
+                            bezeichnung = bezeichnung,
+                            abkuerzung = abkuerzung,
+                            quadratmeterSchnitt = schnitt
+                        ))
                         showEditDialog = false
-                        editingBodenbelag = null
                         bezeichnung = ""
                         abkuerzung = ""
+                        quadratmeterSchnitt = ""
                     }
                 }) { Text("Speichern") }
             },
@@ -939,6 +970,155 @@ fun BluetoothSettingsTab() {
                             fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
                         )
                     }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun BackupSettingsTab(uiState: SettingsUiState, viewModel: SettingsViewModel) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    
+    var exportJson by remember { mutableStateOf("") }
+    var showImportDialog by remember { mutableStateOf(false) }
+    var importJson by remember { mutableStateOf("") }
+    var importMessage by remember { mutableStateOf("") }
+    
+    val exportManager = remember { SettingsExportImportManager() }
+    
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text("Backup & Wiederherstellung", style = MaterialTheme.typography.headlineSmall)
+        
+        Card {
+            Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("Exportieren", style = MaterialTheme.typography.titleMedium)
+                Text(
+                    "Exportieren Sie alle Einstellungen (Raumarten, Bodenbeläge, Rhythmen, Glasarten, LV-Vorgaben) als JSON-Datei.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Button(
+                    onClick = {
+                        val json = exportManager.exportToJson(
+                            uiState.raumarten.map { RaumartEntity(bezeichnung = it.bezeichnung, schnittvorgabe = it.schnittvorgabe) },
+                            uiState.bodenbelage,
+                            uiState.rhysmen.map { RhythmusEntity(klartext = it.klartext, exportwert = it.exportwert, lvWert = it.lvWert) },
+                            uiState.glasarten.map { GlasartEntity(bezeichnung = it.bezeichnung) },
+                            uiState.lvEinstellungen.map { LvEinstellungEntity(raumart = it.raumart, spalte = it.spalte, aufgabe = it.aufgabe, rhythmusPlatzhalter = it.rhythmusPlatzhalter) }
+                        )
+                        exportJson = json
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(Icons.Default.Upload, contentDescription = null)
+                    Spacer(Modifier.width(8.dp))
+                    Text("Als JSON exportieren")
+                }
+                
+                if (exportJson.isNotEmpty()) {
+                    OutlinedTextField(
+                        value = exportJson,
+                        onValueChange = {},
+                        label = { Text("Export-JSON") },
+                        modifier = Modifier.fillMaxWidth().height(200.dp),
+                        readOnly = true
+                    )
+                    TextButton(onClick = { 
+                        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                        val clip = android.content.ClipData.newPlainText("Settings Export", exportJson)
+                        clipboard.setPrimaryClip(clip)
+                        Toast.makeText(context, "In Zwischenablage kopiert!", Toast.LENGTH_SHORT).show()
+                    }) {
+                        Text("In Zwischenablage kopieren")
+                    }
+                }
+            }
+        }
+        
+        Card {
+            Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("Importieren", style = MaterialTheme.typography.titleMedium)
+                Text(
+                    "Importieren Sie Einstellungen aus einer JSON-Datei. Achtung: Vorhandene Einstellungen werden überschrieben!",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error
+                )
+                
+                OutlinedTextField(
+                    value = importJson,
+                    onValueChange = { importJson = it },
+                    label = { Text("JSON hier einfügen") },
+                    modifier = Modifier.fillMaxWidth().height(150.dp),
+                    placeholder = { Text("{\"version\":\"1.0\",\"raumarten\":[...]...") }
+                )
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Button(
+                        onClick = {
+                            val settings = exportManager.importFromJson(importJson)
+                            if (settings != null) {
+                                val errors = exportManager.validateImport(settings)
+                                if (errors.isEmpty()) {
+                                    // Import data
+                                    scope.launch {
+                                        // Clear and insert new data
+                                        for (r in settings.raumarten) {
+                                            viewModel.addRaumart(r.bezeichnung, r.schnittvorgabe)
+                                        }
+                                        for (b in settings.bodenbelage) {
+                                            viewModel.addBodenbelag(b.bezeichnung, b.abkuerzung, b.quadratmeterSchnitt)
+                                        }
+                                        for (rh in settings.rythmen) {
+                                            viewModel.addRhythmus(rh.klartext, rh.exportwert, rh.lvWert)
+                                        }
+                                        for (g in settings.glasarten) {
+                                            viewModel.addGlasart(g.bezeichnung)
+                                        }
+                                        for (lv in settings.lvEinstellungen) {
+                                            viewModel.addLvEinstellung(lv.raumart, lv.spalte, lv.aufgabe, lv.rhythmusPlatzhalter)
+                                        }
+                                        importMessage = "Import erfolgreich! ${settings.raumarten.size} Raumarten, ${settings.bodenbelage.size} Bodenbeläge importiert."
+                                        Toast.makeText(context, "Import erfolgreich!", Toast.LENGTH_SHORT).show()
+                                    }
+                                } else {
+                                    importMessage = "Fehler: ${errors.joinToString(", ")}"
+                                }
+                            } else {
+                                importMessage = "Fehler: Ungültiges JSON-Format"
+                            }
+                        },
+                        modifier = Modifier.weight(1f),
+                        enabled = importJson.isNotBlank()
+                    ) {
+                        Icon(Icons.Default.Download, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Importieren")
+                    }
+                    
+                    OutlinedButton(
+                        onClick = { importJson = "" },
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text("Leeren")
+                    }
+                }
+                
+                if (importMessage.isNotEmpty()) {
+                    Text(
+                        text = importMessage,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = if (importMessage.startsWith("Fehler")) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
+                    )
                 }
             }
         }

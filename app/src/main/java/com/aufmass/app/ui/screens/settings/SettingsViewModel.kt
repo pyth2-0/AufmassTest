@@ -142,9 +142,9 @@ class SettingsViewModel(
         }
     }
 
-    fun addBodenbelag(bezeichnung: String, abkuerzung: String) {
+    fun addBodenbelag(bezeichnung: String, abkuerzung: String, quadratmeterSchnitt: Double = 0.0) {
         viewModelScope.launch {
-            bodenbelagRepository.insert(BodenbelagEntity(bezeichnung = bezeichnung, abkuerzung = abkuerzung))
+            bodenbelagRepository.insert(BodenbelagEntity(bezeichnung = bezeichnung, abkuerzung = abkuerzung, quadratmeterSchnitt = quadratmeterSchnitt))
         }
     }
 
