@@ -118,7 +118,8 @@ class MainActivity : ComponentActivity() {
                                 aufmassRepository,
                                 raumRepository,
                                 glasRepository,
-                                bodenSeRepository
+                                bodenSeRepository,
+                                objektfragebogenRepository
                             )
                         )
                         AufmassDetailScreen(
@@ -150,7 +151,8 @@ class MainActivity : ComponentActivity() {
                                                     uiState.bodenSeList,
                                                     lvEinstellungen,
                                                     rhysmen,
-                                                    bodenbelage
+                                                    bodenbelage,
+                                                    uiState.objektfragebogen
                                                 )
                                             }
                                             startActivity(excelExporter.shareFile(file))

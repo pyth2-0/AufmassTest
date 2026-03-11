@@ -6,6 +6,8 @@ import androidx.core.content.FileProvider
 import com.aufmass.app.data.local.entity.*
 import org.apache.poi.ss.usermodel.*
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import org.apache.poi.xssf.usermodel.XSSFCellStyle
+import org.apache.poi.xssf.usermodel.XSSFColor
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -19,16 +21,20 @@ class ExcelExporter(private val context: Context) {
         bodenSeList: List<BodenSeEntity>,
         lvEinstellungen: List<LvEinstellungEntity> = emptyList(),
         rhysmen: List<RhythmusEntity> = emptyList(),
-        bodenbelage: List<BodenbelagEntity> = emptyList()
+        bodenbelage: List<BodenbelagEntity> = emptyList(),
+        objektfragebogen: ObjektfragebogenEntity? = null
     ): File {
         val templatePath = "kalkulation_vorlage.xlsx"
         val inputStream: InputStream = context.assets.open(templatePath)
         val workbook = XSSFWorkbook(inputStream)
         
-        fillStammdatenSheet(workbook, aufmass)
+        val standardRhythmus = rhysmen.find { it.klartext == aufmass.standardrhythmus }?.exportwert ?: 1.0
+        
+        fillStammdatenSheet(workbook, aufmass, objektfragebogen)
         fillKalkulationUrsheet(workbook, raeume, rhysmen, bodenbelage)
+        fillAufmassGlasSheet(workbook, glasList)
         fillAufmassBodenSheet(workbook, bodenSeList)
-        fillLeistungsverzeichnisSheet(workbook, raeume, lvEinstellungen, rhysmen)
+        fillLeistungsverzeichnisSheet(workbook, raeume, lvEinstellungen, rhysmen, standardRhythmus)
         
         val fileName = "Kalkulation_${aufmass.titel.replace(" ", "_")}_${System.currentTimeMillis()}.xlsx"
         val file = File(context.getExternalFilesDir(null), fileName)
@@ -41,25 +47,69 @@ class ExcelExporter(private val context: Context) {
         return file
     }
 
-    private fun fillStammdatenSheet(workbook: Workbook, aufmass: AufmassEntity) {
+    private fun fillStammdatenSheet(workbook: Workbook, aufmass: AufmassEntity, objektfragebogen: ObjektfragebogenEntity?) {
         val sheet = workbook.getSheet("Stammdaten") ?: return
         
-        val setCellValue = { row: Int, col: Int, value: String ->
-            sheet.getRow(row)?.getCell(col)?.setCellValue(value)
-        }
+        // Stammdaten
+        setCellValue(sheet, 2, 1, aufmass.firma)
+        setCellValue(sheet, 3, 1, "")
+        setCellValue(sheet, 4, 1, "")
+        setCellValue(sheet, 5, 1, aufmass.anschrift)
+        setCellValue(sheet, 6, 1, "")
+        setCellValue(sheet, 7, 1, "")
+        setCellValue(sheet, 8, 1, "")
+        setCellValue(sheet, 9, 1, "")
+        setCellValue(sheet, 10, 1, "")
+        setCellValue(sheet, 11, 1, "")
+        setCellValue(sheet, 12, 1, "")
+        setCellValue(sheet, 13, 1, aufmass.objektanschrift)
+        setCellValue(sheet, 14, 1, "")
+        setCellValue(sheet, 15, 1, aufmass.standardrhythmus)
         
-        setCellValue(2, 1, aufmass.firma)
-        setCellValue(3, 1, aufmass.anschrift)
-        setCellValue(4, 1, "")
-        setCellValue(5, 1, "")
-        setCellValue(6, 1, "")
-        setCellValue(7, 1, "")
-        setCellValue(8, 1, "")
-        setCellValue(9, 1, "")
-        setCellValue(10, 1, "")
-        setCellValue(12, 1, aufmass.objektanschrift)
-        setCellValue(13, 1, "")
-        setCellValue(14, 1, aufmass.standardrhythmus)
+        // Objektfrageblatt Daten ab Zeile 19
+        var rowNum = 19
+        if (objektfragebogen != null) {
+            val objektRows = listOf(
+                "Objektfragebogen:" to "",
+                "Materialkammer: ${objektfragebogen.materialkammer}" to "",
+                "Waschmaschine: ${if (objektfragebogen.waschmaschine) "ja" else "nein"}" to "",
+                "Schmutzfangzone: ${if (objektfragebogen.schmutzfangzone) "ja" else "nein"}" to "",
+                "Wasser: ${if (objektfragebogen.wasser) "ja" else "nein"}" to "",
+                "Strom: ${if (objektfragebogen.strom) "ja" else "nein"}" to "",
+                "Mülltrennung: ${if (objektfragebogen.muelltrennung) "ja" else "nein"}" to "",
+                "Müllentsorgung: ${objektfragebogen.muellentsorgung}" to "",
+                "Aufzug: ${if (objektfragebogen.aufzug) "ja" else "nein"}" to "",
+                "Reinigungszustand: ${objektfragebogen.reinigungszustand}" to "",
+                "Wechselgründe: ${objektfragebogen.wechselgruende}" to "",
+                "Schlüsselobjekt: ${if (objektfragebogen.schluesselobjekt) "ja" else "nein"}" to "",
+                "Alarmanlage: ${if (objektfragebogen.alarmanlage) "ja" else "nein"}" to "",
+                "Besonderheiten: ${objektfragebogen.besonderheiten}" to ""
+            )
+            
+            objektRows.forEach { (label, value) ->
+                setCellValue(sheet, rowNum, 0, label)
+                setCellValue(sheet, rowNum, 1, value)
+                rowNum++
+            }
+        }
+    }
+
+    private fun setCellValue(sheet: Sheet, row: Int, col: Int, value: String) {
+        val r = sheet.getRow(row) ?: sheet.createRow(row)
+        val c = r.getCell(col) ?: r.createCell(col)
+        c.setCellValue(value)
+    }
+    
+    private fun setCellValue(sheet: Sheet, row: Int, col: Int, value: Double) {
+        val r = sheet.getRow(row) ?: sheet.createRow(row)
+        val c = r.getCell(col) ?: r.createCell(col)
+        c.setCellValue(value)
+    }
+    
+    private fun setCellValue(sheet: Sheet, row: Int, col: Int, value: Int) {
+        val r = sheet.getRow(row) ?: sheet.createRow(row)
+        val c = r.getCell(col) ?: r.createCell(col)
+        c.setCellValue(value.toDouble())
     }
 
     private fun fillKalkulationUrsheet(
@@ -71,90 +121,129 @@ class ExcelExporter(private val context: Context) {
         val sheet = workbook.getSheet("Kalk. UR") ?: return
         
         val rhysmenMap = rhysmen.associateBy { it.klartext }
+        val bodenbelagMap = bodenbelage.associateBy { it.bezeichnung }
         
         if (raeume.isEmpty()) return
         
         val numRooms = raeume.size
-        
-        // Find the actual last row with content (template has footer around row 33)
-        val templateEndRow = 35
         val startRow = 26
+        val templateEndRow = 35
         
-        // Shift rows only up to our known template end
+        // Insert new rows
         if (numRooms > 0) {
             sheet.shiftRows(startRow, templateEndRow, numRooms)
         }
         
         var rowNum = startRow
         
-        raeume.forEachIndexed { index, raum ->
+        raeume.forEach { raum ->
             val rhythmusValue = rhysmenMap[raum.rhythmus]?.exportwert ?: 1.0
+            val bodenbelagEntity = bodenbelagMap[raum.bodenbelag]
+            val belagKuerzel = bodenbelagEntity?.abkuerzung ?: ""
+            val quadratmeterSchnitt = bodenbelagEntity?.quadratmeterSchnitt ?: 0.0
             
             val row = sheet.getRow(rowNum) ?: sheet.createRow(rowNum)
             
-            row.getCell(0)?.setCellValue(raum.name)
-            row.getCell(1)?.setCellValue(raum.bodenbelag)
-            row.getCell(2)?.setCellValue(raum.anzahl.toDouble())
-            row.getCell(3)?.setCellValue(raum.laenge)
-            row.getCell(4)?.setCellValue(raum.breite)
-            row.getCell(5)?.setCellValue(raum.gesamtflaeche)
-            row.getCell(7)?.setCellValue(rhythmusValue)
-            
-            if (row.getCell(8) == null) row.createCell(8)
-            row.getCell(8)?.setCellFormula("\$I\$24")
-            
-            if (row.getCell(9) == null) row.createCell(9)
-            val totalFormula = "IFERROR((F$rowNum/G$rowNum*I$rowNum*H$rowNum),\"\")"
-            row.getCell(9)?.setCellFormula(totalFormula)
-            
-            if (row.getCell(10) == null) row.createCell(10)
-            val timeFormula = "IFERROR((F$rowNum/G$rowNum),\"\")"
-            row.getCell(10)?.setCellFormula(timeFormula)
-            
-            for (dayCol in 11..16) {
-                if (row.getCell(dayCol) == null) row.createCell(dayCol)
-                row.getCell(dayCol)?.setCellFormula("\$K$rowNum")
-            }
-            if (row.getCell(16) == null) row.createCell(16)
-            row.getCell(16)?.setCellFormula("\$K$rowNum")
+            // A: Raumname
+            setCellValue(sheet, rowNum, 0, raum.name)
+            // B: Belag-Kürzel
+            setCellValue(sheet, rowNum, 1, belagKuerzel)
+            // C: Anzahl
+            setCellValue(sheet, rowNum, 2, raum.anzahl.toDouble())
+            // D: Länge
+            setCellValue(sheet, rowNum, 3, raum.laenge)
+            // E: Breite
+            setCellValue(sheet, rowNum, 4, raum.breite)
+            // G: m²-Schnitt
+            setCellValue(sheet, rowNum, 6, quadratmeterSchnitt)
+            // H: Rhythmus-Wert
+            setCellValue(sheet, rowNum, 7, rhythmusValue)
             
             rowNum++
         }
         
-        // Update TOTAL row (now shifted down by numRooms)
+        // Update TOTAL row
         val totalRowNum = 28 + numRooms
         val totalRow = sheet.getRow(totalRowNum) ?: sheet.createRow(totalRowNum)
-        totalRow.getCell(5)?.setCellFormula("SUM(F$startRow:F${totalRowNum - 1})")
-        totalRow.getCell(9)?.setCellFormula("SUM(J$startRow:J${totalRowNum - 1})")
-        totalRow.getCell(10)?.setCellFormula("SUM(K$startRow:K${totalRowNum - 1})")
+        setCellFormula(totalRow, 5, "SUM(F$startRow:F${totalRowNum - 1})")
+        setCellFormula(totalRow, 9, "SUM(J$startRow:J${totalRowNum - 1})")
+        setCellFormula(totalRow, 10, "SUM(K$startRow:K${totalRowNum - 1})")
         
-        totalRow.getCell(11)?.setCellFormula("SUM(L$startRow:L${totalRowNum - 1})")
-        totalRow.getCell(12)?.setCellFormula("SUM(M$startRow:M${totalRowNum - 1})")
-        totalRow.getCell(13)?.setCellFormula("SUM(N$startRow:N${totalRowNum - 1})")
-        totalRow.getCell(14)?.setCellFormula("SUM(O$startRow:O${totalRowNum - 1})")
-        totalRow.getCell(15)?.setCellFormula("SUM(P$startRow:P${totalRowNum - 1})")
-        totalRow.getCell(16)?.setCellFormula("SUM(Q$startRow:Q${totalRowNum - 1})")
+        for (col in 11..16) {
+            setCellFormula(totalRow, col, "SUM(${getColumnLetter(col)}$startRow:${getColumnLetter(col)}${totalRowNum - 1})")
+        }
         
-        // Update footer rows (Anfahrt, etc.)
+        // Update footer rows
         val anfangFahrtRowNum = 30 + numRooms
         val anfangFahrtRow = sheet.getRow(anfangFahrtRowNum)
         if (anfangFahrtRow != null) {
-            anfangFahrtRow.getCell(7)?.setCellFormula("MAX(H$startRow:H${totalRowNum - 1})")
+            setCellFormula(anfangFahrtRow, 7, "MAX(H$startRow:H${totalRowNum - 1})")
         }
+        
         val zeitlichErweitertRowNum = 31 + numRooms
         val zeitlichErweitertRow = sheet.getRow(zeitlichErweitertRowNum)
         if (zeitlichErweitertRow != null) {
-            zeitlichErweitertRow.getCell(7)?.setCellFormula("MAX(H$startRow:H${totalRowNum - 1})")
+            setCellFormula(zeitlichErweitertRow, 7, "MAX(H$startRow:H${totalRowNum - 1})")
         }
         
         // Update Angebotssumme
         val angebotssummeRowNum = 33 + numRooms
         val angebotssummeRow = sheet.getRow(angebotssummeRowNum)
         if (angebotssummeRow != null) {
-            angebotssummeRow.getCell(10)?.setCellFormula("SUM(J$totalRowNum,J${anfangFahrtRowNum}:J${zeitlichErweitertRowNum})")
-            angebotssummeRow.getCell(11)?.setCellFormula("SUM(K$totalRowNum,K${anfangFahrtRowNum}:K${zeitlichErweitertRowNum})")
-            angebotssummeRow.getCell(12)?.setCellFormula("SUM(L$totalRowNum,L${anfangFahrtRowNum}:L${zeitlichErweitertRowNum})")
+            setCellFormula(angebotssummeRow, 10, "SUM(J$totalRowNum,J${anfangFahrtRowNum}:J${zeitlichErweitertRowNum})")
+            setCellFormula(angebotssummeRow, 11, "SUM(K$totalRowNum,K${anfangFahrtRowNum}:K${zeitlichErweitertRowNum})")
+            setCellFormula(angebotssummeRow, 12, "SUM(L$totalRowNum,L${anfangFahrtRowNum}:L${zeitlichErweitertRowNum})")
         }
+    }
+
+    private fun setCellFormula(row: Row, col: Int, formula: String) {
+        val c = row.getCell(col) ?: row.createCell(col)
+        c.setCellFormula(formula)
+    }
+
+    private fun getColumnLetter(col: Int): String {
+        return when (col) {
+            0 -> "A"; 1 -> "B"; 2 -> "C"; 3 -> "D"; 4 -> "E"; 5 -> "F"; 6 -> "G"; 7 -> "H"
+            8 -> "I"; 9 -> "J"; 10 -> "K"; 11 -> "L"; 12 -> "M"; 13 -> "N"; 14 -> "O"; 15 -> "P"; 16 -> "Q"
+            else -> "R"
+        }
+    }
+
+    private fun fillAufmassGlasSheet(workbook: Workbook, glasList: List<GlasEntity>) {
+        val sheet = workbook.getSheet("Aufmaß Glas") ?: return
+        
+        if (glasList.isEmpty()) return
+        
+        val numEntries = glasList.size
+        val startRow = 18
+        val templateEndRow = 22
+        
+        // Insert new rows
+        sheet.shiftRows(startRow, templateEndRow, numEntries)
+        
+        var rowNum = startRow
+        
+        glasList.forEach { glas ->
+            // A: Bezeichnung
+            setCellValue(sheet, rowNum, 0, glas.bezeichnung)
+            // B: Glasart
+            setCellValue(sheet, rowNum, 1, glas.glasart)
+            // C: Anzahl
+            setCellValue(sheet, rowNum, 2, glas.anzahl.toDouble())
+            // D: Breite
+            setCellValue(sheet, rowNum, 3, glas.breite)
+            // E: Höhe
+            setCellValue(sheet, rowNum, 4, glas.hoehe)
+            
+            rowNum++
+        }
+        
+        // Update SUM row
+        val sumRowNum = 20 + numEntries
+        val sumRow = sheet.getRow(sumRowNum) ?: sheet.createRow(sumRowNum)
+        setCellFormula(sumRow, 7, "SUM(H$startRow:H${sumRowNum - 1})")
+        setCellFormula(sumRow, 9, "SUM(J$startRow:J${sumRowNum - 1})")
+        setCellFormula(sumRow, 11, "SUM(L$startRow:L${sumRowNum - 1})")
     }
 
     private fun fillAufmassBodenSheet(workbook: Workbook, bodenSeList: List<BodenSeEntity>) {
@@ -162,114 +251,120 @@ class ExcelExporter(private val context: Context) {
         
         if (bodenSeList.isEmpty()) return
         
-        // Insert new rows for each entry
         val numEntries = bodenSeList.size
         val startRow = 18
-        val templateEndRow = 22  // SUM row is at 20, so shift up to 22 to be safe
+        val templateEndRow = 22
+        
         sheet.shiftRows(startRow, templateEndRow, numEntries)
         
-        var rowNum = 18
+        var rowNum = startRow
         
-        bodenSeList.forEach { bodenSe ->
-            val row = sheet.getRow(rowNum) ?: sheet.createRow(rowNum)
-            
-            if (row.getCell(0) == null) row.createCell(0)
-            row.getCell(0)?.setCellValue((rowNum - 18 + 1).toDouble())
-            
-            if (row.getCell(1) == null) row.createCell(1)
-            row.getCell(1)?.setCellValue(bodenSe.bezeichnung)
-            
-            if (row.getCell(2) == null) row.createCell(2)
-            row.getCell(2)?.setCellValue(bodenSe.bodenart)
-            
-            if (row.getCell(3) == null) row.createCell(3)
-            row.getCell(3)?.setCellValue(bodenSe.anzahl.toDouble())
-            
-            if (row.getCell(4) == null) row.createCell(4)
-            row.getCell(4)?.setCellValue(bodenSe.laenge)
-            
-            if (row.getCell(5) == null) row.createCell(5)
-            row.getCell(5)?.setCellValue(bodenSe.breite)
-            
-            if (row.getCell(6) == null) row.createCell(6)
-            row.getCell(6)?.setCellFormula("E$rowNum*F$rowNum")
-            
-            if (row.getCell(7) == null) row.createCell(7)
-            row.getCell(7)?.setCellFormula("D$rowNum*G$rowNum")
+        bodenSeList.forEachIndexed { index, bodenSe ->
+            // A: lfd.Nr.
+            setCellValue(sheet, rowNum, 0, (index + 1).toDouble())
+            // B: Bezeichnung
+            setCellValue(sheet, rowNum, 1, bodenSe.bezeichnung)
+            // C: Bodenart
+            setCellValue(sheet, rowNum, 2, bodenSe.bodenart)
+            // D: Anzahl
+            setCellValue(sheet, rowNum, 3, bodenSe.anzahl.toDouble())
+            // E: Länge
+            setCellValue(sheet, rowNum, 4, bodenSe.laenge)
+            // F: Breite
+            setCellValue(sheet, rowNum, 5, bodenSe.breite)
             
             rowNum++
         }
         
-        // Update SUM row (now at 20 + numEntries)
+        // Update SUM row
         val sumRowNum = 20 + numEntries
         val sumRow = sheet.getRow(sumRowNum) ?: sheet.createRow(sumRowNum)
-        sumRow.getCell(7)?.setCellFormula("SUM(H18:H${sumRowNum - 1})")
-        sumRow.getCell(9)?.setCellFormula("SUM(J18:J${sumRowNum - 1})")
-        sumRow.getCell(11)?.setCellFormula("SUM(L18:L${sumRowNum - 1})")
+        setCellFormula(sumRow, 7, "SUM(H$startRow:H${sumRowNum - 1})")
+        setCellFormula(sumRow, 9, "SUM(J$startRow:J${sumRowNum - 1})")
+        setCellFormula(sumRow, 11, "SUM(L$startRow:L${sumRowNum - 1})")
+    }
+
+    private fun calculateRhythmusValue(platzhalter: String, standardRhythmus: Double): Double {
+        return when {
+            platzhalter.contains("{Rhythmus}/2") || platzhalter.contains("{Rhythmus}/2") -> {
+                val baseValue = standardRhythmus
+                if (baseValue == 1.0) 1.0 else kotlin.math.floor(baseValue / 2.0)
+            }
+            platzhalter.contains("{Rhythmus}") -> {
+                standardRhythmus
+            }
+            platzhalter.isNotBlank() -> {
+                try {
+                    platzhalter.replace(",", ".").toDoubleOrNull() ?: 0.0
+                } catch (e: Exception) {
+                    0.0
+                }
+            }
+            else -> 0.0
+        }
     }
 
     private fun fillLeistungsverzeichnisSheet(
         workbook: Workbook,
         raeume: List<RaumEntity>,
         lvEinstellungen: List<LvEinstellungEntity>,
-        rhysmen: List<RhythmusEntity>
+        rhysmen: List<RhythmusEntity>,
+        standardRhythmus: Double
     ) {
         val sheet = workbook.getSheet("Leistungsverzeichnis") ?: return
         
+        // Group raeume by raumart
         val raeumeByRaumart = raeume.groupBy { it.raumart }
         
-        val lvByRaumart = lvEinstellungen.groupBy { it.raumart }
+        // Get LV tasks by raumart (including universal "*")
+        val universalLvTasks = lvEinstellungen.filter { it.raumart == "*" || it.raumart.isEmpty() }
         
-        val rowStart = 7
-        var rowNum = rowStart
+        // Determine all unique task columns from all LV einstellungen
+        val allLvTasks = lvEinstellungen.sortedBy { it.spalte }
         
+        // Start row for data
+        var rowNum = 7
+        
+        // Create a row for each raumart
         raeumeByRaumart.forEach { (raumart, raeumeList) ->
-            val totalFlaeche = raeumeList.sumOf { it.gesamtflaeche }
-            val lvTasks = lvByRaumart[raumart] ?: emptyList()
+            val anzahl = raeumeList.size
+            val firstRaum = raeumeList.firstOrNull()
+            val rhythmus = firstRaum?.rhythmus ?: ""
+            val rhythmusValue = rhysmen.find { it.klartext == rhythmus }?.exportwert ?: standardRhythmus
+            
+            // Get LV tasks for this raumart, or fall back to universal
+            val raumartLvTasks = lvEinstellungen.filter { it.raumart == raumart }
+            val tasksToUse = if (raumartLvTasks.isNotEmpty()) raumartLvTasks else universalLvTasks
+            val isUniversal = raumartLvTasks.isEmpty()
             
             val row = sheet.getRow(rowNum) ?: sheet.createRow(rowNum)
             
-            if (row.getCell(0) == null) row.createCell(0)
-            row.getCell(0)?.setCellValue(raumart)
+            // Spalten A-C zusammengefügt: "Raumart (Anzahl)"
+            setCellValue(sheet, rowNum, 0, "$raumart ($anzahl)")
+            if (isUniversal) {
+                // Rot färben für universelle LV
+                val cell = row.getCell(0) ?: row.createCell(0)
+                val style = workbook.createCellStyle()
+                val font = workbook.createFont()
+                font.color = org.apache.poi.ss.usermodel.IndexedColors.RED.getIndex()
+                style.setFont(font)
+                cell.cellStyle = style
+            }
             
-            if (row.getCell(1) == null) row.createCell(1)
-            row.getCell(1)?.setCellValue(totalFlaeche)
+            // D: Rhythmus-Wert
+            setCellValue(sheet, rowNum, 3, rhythmusValue)
             
-            if (row.getCell(2) == null) row.createCell(2)
-            row.getCell(2)?.setCellValue(raeumeList.size.toDouble())
-            
-            if (row.getCell(3) == null) row.createCell(3)
-            val rhythmus = raeumeList.firstOrNull()?.rhythmus ?: ""
-            row.getCell(3)?.setCellValue(rhythmus)
-            
-            lvTasks.forEachIndexed { index, lvTask ->
-                val colIndex = 10 + index
-                if (colIndex < 55) {
-                    if (row.getCell(colIndex) == null) row.createCell(colIndex)
-                    row.getCell(colIndex)?.setCellValue("X")
+            // Fill LV task columns (starting from column E = index 4)
+            tasksToUse.forEach { lvTask ->
+                val spalteOffset = lvTask.spalte.toIntOrNull() ?: 0
+                val colIndex = 4 + spalteOffset
+                if (colIndex in 4..54) {
+                    val value = calculateRhythmusValue(lvTask.rhythmusPlatzhalter, standardRhythmus)
+                    setCellValue(sheet, rowNum, colIndex, value)
                 }
             }
             
             rowNum++
-        }
-        
-        val wildcardLvTasks = lvByRaumart["*"] ?: lvByRaumart[""] ?: emptyList()
-        if (wildcardLvTasks.isNotEmpty()) {
-            val row = sheet.getRow(rowNum) ?: sheet.createRow(rowNum)
-            if (row.getCell(0) == null) row.createCell(0)
-            row.getCell(0)?.setCellValue("Allgemein")
-            
-            val totalFlaeche = raeume.sumOf { it.gesamtflaeche }
-            if (row.getCell(1) == null) row.createCell(1)
-            row.getCell(1)?.setCellValue(totalFlaeche)
-            
-            wildcardLvTasks.forEachIndexed { index, lvTask ->
-                val colIndex = 10 + index
-                if (colIndex < 55) {
-                    if (row.getCell(colIndex) == null) row.createCell(colIndex)
-                    row.getCell(colIndex)?.setCellValue("X")
-                }
-            }
         }
     }
 

@@ -13,6 +13,7 @@ data class AufmassDetailUiState(
     val raeume: List<RaumEntity> = emptyList(),
     val glasList: List<GlasEntity> = emptyList(),
     val bodenSeList: List<BodenSeEntity> = emptyList(),
+    val objektfragebogen: ObjektfragebogenEntity? = null,
     val isLoading: Boolean = true
 )
 
@@ -21,7 +22,8 @@ class AufmassDetailViewModel(
     private val aufmassRepository: AufmassRepository,
     private val raumRepository: RaumRepository,
     private val glasRepository: GlasRepository,
-    private val bodenSeRepository: BodenSeRepository
+    private val bodenSeRepository: BodenSeRepository,
+    private val objektfragebogenRepository: ObjektfragebogenRepository? = null
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AufmassDetailUiState())
@@ -32,6 +34,7 @@ class AufmassDetailViewModel(
         loadRaeume()
         loadGlas()
         loadBodenSe()
+        loadObjektfragebogen()
     }
 
     private fun loadAufmass() {
@@ -61,6 +64,16 @@ class AufmassDetailViewModel(
         viewModelScope.launch {
             bodenSeRepository.getBodenSeByAufmassId(aufmassId).collect { list ->
                 _uiState.update { it.copy(bodenSeList = list) }
+            }
+        }
+    }
+
+    private fun loadObjektfragebogen() {
+        objektfragebogenRepository?.let { repo ->
+            viewModelScope.launch {
+                repo.getByAufmassId(aufmassId).collect { obj ->
+                    _uiState.update { it.copy(objektfragebogen = obj) }
+                }
             }
         }
     }
@@ -95,7 +108,8 @@ class AufmassDetailViewModel(
         private val aufmassRepository: AufmassRepository,
         private val raumRepository: RaumRepository,
         private val glasRepository: GlasRepository,
-        private val bodenSeRepository: BodenSeRepository
+        private val bodenSeRepository: BodenSeRepository,
+        private val objektfragebogenRepository: ObjektfragebogenRepository? = null
     ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -104,7 +118,8 @@ class AufmassDetailViewModel(
                 aufmassRepository,
                 raumRepository,
                 glasRepository,
-                bodenSeRepository
+                bodenSeRepository,
+                objektfragebogenRepository
             ) as T
         }
     }

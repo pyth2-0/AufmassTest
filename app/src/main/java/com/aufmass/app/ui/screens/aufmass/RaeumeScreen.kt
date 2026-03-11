@@ -134,9 +134,13 @@ fun RaeumeScreen(
     }
 
     fun hideKeyboard() {
-        hideKeyboard()
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow((context as? android.app.Activity)?.window?.decorView?.windowToken, 0)
+        keyboardController?.hide()
+        try {
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow((context as? android.app.Activity)?.window?.decorView?.windowToken, 0)
+        } catch (e: Exception) {
+            // Ignore errors
+        }
     }
 
     DisposableEffect(bluetoothManager.lastMeasurement) {
@@ -146,7 +150,6 @@ fun RaeumeScreen(
                 
                 when (result) {
                     is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
-                        hideKeyboard()
                         val formatted = measurementHandler.formatMeasurement(result.value)
                         when (measurementHandler.getCurrentField()) {
                             BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
@@ -159,7 +162,6 @@ fun RaeumeScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
-                        hideKeyboard()
                         when (result.field) {
                             BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
                                 editTextBreite.value?.apply { post { requestFocus() } }
@@ -168,7 +170,6 @@ fun RaeumeScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.CloseKeyboard -> {
-                        hideKeyboard()
                         focusManager.clearFocus()
                         measurementHandler.clearFocusedField()
                     }
