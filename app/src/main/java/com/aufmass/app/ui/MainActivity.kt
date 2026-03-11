@@ -34,6 +34,12 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         // Auto-Connect für Bluetooth beim App-Start und wenn App wieder aufgerufen wird
         val bluetoothSettings = BluetoothSettingsManager.getInstance(this)
+        val mac = bluetoothSettings.macAddress
+        val autoConn = bluetoothSettings.autoConnect
+        val configured = bluetoothSettings.isConfigured()
+        
+        Toast.makeText(this, "MAC: '$mac', AutoConnect: $autoConn, Configured: $configured", Toast.LENGTH_LONG).show()
+        
         if (bluetoothSettings.autoConnect) {
             if (bluetoothSettings.isConfigured()) {
                 val bluetoothManager = BluetoothManager.getInstance(this)
