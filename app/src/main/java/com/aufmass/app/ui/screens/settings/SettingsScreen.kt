@@ -40,7 +40,7 @@ fun SettingsScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Raumarten", "Rhythmen", "Bodenbeläge", "Glasarten", "LV", "Bluetooth", "Backup")
+    val tabs = listOf("Raumarten", "Rhythmen", "Bodenbeläge", "Glasarten", "Bluetooth", "Backup")
 
     Scaffold(
         topBar = {
@@ -66,9 +66,8 @@ fun SettingsScreen(
                 1 -> RhythmenEditableTab(uiState, viewModel)
                 2 -> BodenbelageEditableTab(uiState, viewModel)
                 3 -> GlasartenEditableTab(uiState, viewModel)
-                4 -> LvEditableTab(uiState, viewModel)
-                5 -> BluetoothSettingsTab()
-                6 -> BackupSettingsTab(uiState, viewModel)
+                4 -> BluetoothSettingsTab()
+                5 -> BackupSettingsTab(uiState, viewModel)
             }
         }
     }
