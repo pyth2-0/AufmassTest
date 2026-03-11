@@ -130,21 +130,16 @@ fun StylusEditText(
 }
 
 private fun EditText.applyDarkModeStyle(context: android.content.Context) {
-    val typedArray = context.theme.obtainStyledAttributes(
-        intArrayOf(
-            android.R.attr.colorBackground,
-            android.R.attr.textColor,
-            android.R.attr.textColorHint
-        )
-    )
-    try {
-        val bgColor = typedArray.getColor(0, android.graphics.Color.WHITE)
-        val textColor = typedArray.getColor(1, android.graphics.Color.BLACK)
-        val hintColor = typedArray.getColor(2, android.graphics.Color.GRAY)
-        setBackgroundColor(bgColor)
-        setTextColor(textColor)
-        setHintTextColor(hintColor)
-    } finally {
-        typedArray.recycle()
+    val nightModeFlags = context.resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+    val isDarkMode = nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES
+    
+    if (isDarkMode) {
+        setBackgroundColor(android.graphics.Color.parseColor("#1C1B1F"))
+        setTextColor(android.graphics.Color.WHITE)
+        setHintTextColor(android.graphics.Color.parseColor("#938F99"))
+    } else {
+        setBackgroundColor(android.graphics.Color.WHITE)
+        setTextColor(android.graphics.Color.BLACK)
+        setHintTextColor(android.graphics.Color.GRAY)
     }
 }
