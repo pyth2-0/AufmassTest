@@ -139,32 +139,62 @@ abstract class AufmassDatabase : RoomDatabase() {
 
             // LV Standard-Aufgaben (basierend auf Excel kalkulation_vorlage.xlsx)
             val lvEinstellungen = listOf(
-                // Bodenreinigungsarbeiten
-                LvEinstellungEntity(raumart = "Büro", spalte = "A", aufgabe = "Kehren", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Büro", spalte = "B", aufgabe = "2-stufig wischen", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Büro", spalte = "C", aufgabe = "Saugen, komplett", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Büro", spalte = "D", aufgabe = "kehren/Saugen, auf Sicht", rhythmusPlatzhalter = "{Rhythmus}"),
+                // Büro
+                LvEinstellungEntity(raumart = "Büro", spalte = "d", aufgabe = "Kehren", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "e", aufgabe = "2-stufig wischen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "f", aufgabe = "Saugen, komplett", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "m", aufgabe = "freigeräumte Schreib- und Beistelltische reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "n", aufgabe = "Telefone entstauben", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "q", aufgabe = "Fensterbänke, Kabelkanäle entstauben", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "t", aufgabe = "Zimmertüren und Zargen, Griffspuren entfernen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "y", aufgabe = "Lichtschalter, Steckdosen, Griffspuren entfernen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "z", aufgabe = "Bilderrahmen entstauben", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "aa", aufgabe = "Spinnweben entfernen", rhythmusPlatzhalter = "M"),
+                LvEinstellungEntity(raumart = "Büro", spalte = "ac", aufgabe = "Handläufe reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
                 
-                LvEinstellungEntity(raumart = "WC", spalte = "A", aufgabe = "Kehren", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "WC", spalte = "B", aufgabe = "2-stufig wischen", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "WC", spalte = "C", aufgabe = "Sanitärobjekte, einschl. Armaturen", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "WC", spalte = "D", aufgabe = "WC - Bürstenhalter", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "WC", spalte = "E", aufgabe = "Papierspender auffüllen", rhythmusPlatzhalter = "{Rhythmus}"),
+                // WC
+                LvEinstellungEntity(raumart = "WC", spalte = "aj", aufgabe = "Sanitärobjekte inkl. Armaturen reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "WC", spalte = "ak", aufgabe = "Spiegel, Ablagen reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "WC", spalte = "al", aufgabe = "Wandfliesen im Spritzbereich reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "WC", spalte = "am", aufgabe = "Wandfliesen + WC-Trennwände Gesamtfläche reinigen", rhythmusPlatzhalter = "M"),
+                LvEinstellungEntity(raumart = "WC", spalte = "an", aufgabe = "Wannen + Duschen reinigen", rhythmusPlatzhalter = "M"),
+                LvEinstellungEntity(raumart = "WC", spalte = "ao", aufgabe = "WC-Bürstenhalter reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "WC", spalte = "ap", aufgabe = "Seifen- und Papierspender reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "WC", spalte = "aq", aufgabe = "Versorgung / Lieferung", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "WC", spalte = "aa", aufgabe = "Spinnweben entfernen", rhythmusPlatzhalter = "M"),
                 
-                LvEinstellungEntity(raumart = "Flur", spalte = "A", aufgabe = "Kehren", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Flur", spalte = "B", aufgabe = "2-stufig wischen", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Flur", spalte = "C", aufgabe = "Schmutzfangmatten saugen", rhythmusPlatzhalter = "{Rhythmus}"),
+                // Umkleide
+                LvEinstellungEntity(raumart = "Umkleide", spalte = "f", aufgabe = "Saugen, komplett", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Umkleide", spalte = "e", aufgabe = "2-stufig wischen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Umkleide", spalte = "s", aufgabe = "Polstermöbel entstauben", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Umkleide", spalte = "ac", aufgabe = "Handläufe reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Umkleide", spalte = "ad", aufgabe = "Fuß- / Sockelleisten entstauben", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Umkleide", spalte = "aa", aufgabe = "Spinnweben entfernen", rhythmusPlatzhalter = "M"),
                 
-                LvEinstellungEntity(raumart = "Küche", spalte = "A", aufgabe = "Kehren", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Küche", spalte = "B", aufgabe = "2-stufig wischen", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Küche", spalte = "C", aufgabe = "Arbeitsflächen reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "Küche", spalte = "D", aufgabe = "Spüle reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                // Konferenzraum
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "f", aufgabe = "Saugen, komplett", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "e", aufgabe = "2-stufig wischen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "m", aufgabe = "freigeräumte Tische reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "o", aufgabe = "Tisch- und Stuhlbeine reinigen", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "t", aufgabe = "Zimmertüren und Zargen, Griffspuren entfernen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "y", aufgabe = "Lichtschalter, Steckdosen, Griffspuren entfernen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "z", aufgabe = "Bilderrahmen entstauben", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Konferenzraum", spalte = "aa", aufgabe = "Spinnweben entfernen", rhythmusPlatzhalter = "M"),
                 
-                // Pauschal für alle Räume - Ausstattung
-                LvEinstellungEntity(raumart = "*", spalte = "E", aufgabe = "Abfallbehälter leeren", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "*", spalte = "F", aufgabe = "Staub wischen/Entstauben", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "*", spalte = "G", aufgabe = "Griffspuren entfernen", rhythmusPlatzhalter = "{Rhythmus}"),
-                LvEinstellungEntity(raumart = "*", spalte = "H", aufgabe = "Lichtschalter/Steckdosen reinigen", rhythmusPlatzhalter = "{Rhythmus}")
+                // Lager
+                LvEinstellungEntity(raumart = "Lager", spalte = "d", aufgabe = "Kehren", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Lager", spalte = "g", aufgabe = "Kehren/Saugen auf Sicht", rhythmusPlatzhalter = "{Rhythmus}/2"),
+                LvEinstellungEntity(raumart = "Lager", spalte = "h", aufgabe = "maschinelle Bodenreinigung", rhythmusPlatzhalter = "M"),
+                LvEinstellungEntity(raumart = "Lager", spalte = "aa", aufgabe = "Spinnweben entfernen", rhythmusPlatzhalter = "M"),
+                LvEinstellungEntity(raumart = "Lager", spalte = "ad", aufgabe = "Sockelleisten entstauben", rhythmusPlatzhalter = "M"),
+                
+                // Produktionsraum
+                LvEinstellungEntity(raumart = "Produktionsraum", spalte = "d", aufgabe = "Kehren", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Produktionsraum", spalte = "h", aufgabe = "maschinelle Bodenreinigung", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Produktionsraum", spalte = "i", aufgabe = "Schmutzfangmatten saugen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Produktionsraum", spalte = "aa", aufgabe = "Spinnweben entfernen", rhythmusPlatzhalter = "M"),
+                LvEinstellungEntity(raumart = "Produktionsraum", spalte = "ac", aufgabe = "Handläufe reinigen", rhythmusPlatzhalter = "{Rhythmus}"),
+                LvEinstellungEntity(raumart = "Produktionsraum", spalte = "ad", aufgabe = "Sockelleisten entstauben", rhythmusPlatzhalter = "{Rhythmus}")
             )
             lvEinstellungen.forEach { database.lvEinstellungDao().insert(it) }
         }

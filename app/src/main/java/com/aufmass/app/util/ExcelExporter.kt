@@ -159,6 +159,17 @@ class ExcelExporter(private val context: Context) {
             // H: Rhythmus-Wert
             setCellValue(sheet, rowNum, 7, rhythmusValue)
             
+            // Set formulas for this row
+            setCellFormula(row, 5, "C$rowNum*D$rowNum*E$rowNum")  // m²-Fläche
+            setCellFormula(row, 8, "\$I\$24")  // Std.lohn
+            setCellFormula(row, 9, "IFERROR((F$rowNum/G$rowNum*I$rowNum*H$rowNum),\"\")")  // Total
+            setCellFormula(row, 10, "IFERROR((F$rowNum/G$rowNum),\"\")")  // Zeit
+            
+            // Day columns
+            for (dayCol in 11..16) {
+                setCellFormula(row, dayCol, "\$K$rowNum")
+            }
+            
             rowNum++
         }
         
@@ -304,6 +315,20 @@ class ExcelExporter(private val context: Context) {
         }
     }
 
+    private fun columnLetterToIndex(letter: String): Int {
+        val col = letter.lowercase().trim()
+        return when (col) {
+            "a" -> 0; "b" -> 1; "c" -> 2; "d" -> 3; "e" -> 4; "f" -> 5; "g" -> 6; "h" -> 7
+            "i" -> 8; "j" -> 9; "k" -> 10; "l" -> 11; "m" -> 12; "n" -> 13; "o" -> 14; "p" -> 15
+            "q" -> 16; "r" -> 17; "s" -> 18; "t" -> 19; "u" -> 20; "v" -> 21; "w" -> 22; "x" -> 23
+            "y" -> 24; "z" -> 25
+            "aa" -> 26; "ab" -> 27; "ac" -> 28; "ad" -> 29; "ae" -> 30; "af" -> 31; "ag" -> 32; "ah" -> 33
+            "ai" -> 34; "aj" -> 35; "ak" -> 36; "al" -> 37; "am" -> 38; "an" -> 39; "ao" -> 40; "ap" -> 41
+            "aq" -> 42
+            else -> -1
+        }
+    }
+
     private fun fillLeistungsverzeichnisSheet(
         workbook: Workbook,
         raeume: List<RaumEntity>,
@@ -316,11 +341,8 @@ class ExcelExporter(private val context: Context) {
         // Group raeume by raumart
         val raeumeByRaumart = raeume.groupBy { it.raumart }
         
-        // Get LV tasks by raumart (including universal "*")
+        // Get universal LV tasks
         val universalLvTasks = lvEinstellungen.filter { it.raumart == "*" || it.raumart.isEmpty() }
-        
-        // Determine all unique task columns from all LV einstellungen
-        val allLvTasks = lvEinstellungen.sortedBy { it.spalte }
         
         // Start row for data
         var rowNum = 7
@@ -328,9 +350,6 @@ class ExcelExporter(private val context: Context) {
         // Create a row for each raumart
         raeumeByRaumart.forEach { (raumart, raeumeList) ->
             val anzahl = raeumeList.size
-            val firstRaum = raeumeList.firstOrNull()
-            val rhythmus = firstRaum?.rhythmus ?: ""
-            val rhythmusValue = rhysmen.find { it.klartext == rhythmus }?.exportwert ?: standardRhythmus
             
             // Get LV tasks for this raumart, or fall back to universal
             val raumartLvTasks = lvEinstellungen.filter { it.raumart == raumart }
@@ -351,14 +370,10 @@ class ExcelExporter(private val context: Context) {
                 cell.cellStyle = style
             }
             
-            // D: Rhythmus-Wert
-            setCellValue(sheet, rowNum, 3, rhythmusValue)
-            
-            // Fill LV task columns (starting from column E = index 4)
+            // Fill LV task columns based on spalte
             tasksToUse.forEach { lvTask ->
-                val spalteOffset = lvTask.spalte.toIntOrNull() ?: 0
-                val colIndex = 4 + spalteOffset
-                if (colIndex in 4..54) {
+                val colIndex = columnLetterToIndex(lvTask.spalte)
+                if (colIndex >= 0 && colIndex <= 54) {
                     val value = calculateRhythmusValue(lvTask.rhythmusPlatzhalter, standardRhythmus)
                     setCellValue(sheet, rowNum, colIndex, value)
                 }
