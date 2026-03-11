@@ -145,10 +145,28 @@ class BluetoothManager(context: Context) {
     fun connectToSavedDevice() {
         val address = settingsManager.macAddress
         if (address.isNotBlank()) {
+            addLog("Verbinde mit gespeichertem Gerät: $address")
             connectToDevice(address)
         } else {
             addLog("Keine MAC-Adresse gespeichert")
         }
+    }
+
+    fun tryAutoConnect() {
+        if (!settingsManager.autoConnect || !settingsManager.bluetoothEnabled) {
+            addLog("Auto-Connect deaktiviert")
+            return
+        }
+        if (!isBluetoothEnabled()) {
+            addLog("Bluetooth nicht eingeschaltet")
+            return
+        }
+        if (isConnected()) {
+            addLog("Bereits verbunden")
+            return
+        }
+        addLog("Starte Auto-Connect...")
+        connectToSavedDevice()
     }
 
     fun disconnect() {

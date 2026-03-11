@@ -29,15 +29,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        
-        // Auto-Connect für Bluetooth beim App-Start
+    
+    override fun onResume() {
+        super.onResume()
+        // Auto-Connect für Bluetooth beim App-Start und wenn App wieder aufgerufen wird
         val bluetoothSettings = BluetoothSettingsManager.getInstance(this)
         if (bluetoothSettings.autoConnect && bluetoothSettings.isConfigured()) {
             val bluetoothManager = BluetoothManager.getInstance(this)
-            bluetoothManager.startPeriodicReconnect()
+            bluetoothManager.tryAutoConnect()
         }
+    }
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         
         val app = application as AufmassApplication
         val database = app.database
