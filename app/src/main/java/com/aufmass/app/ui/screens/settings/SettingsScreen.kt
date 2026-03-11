@@ -78,9 +78,13 @@ fun SettingsScreen(
 fun RaumartenEditableTab(uiState: SettingsUiState, viewModel: SettingsViewModel) {
     var showDialog by remember { mutableStateOf(false) }
     var showEditDialog by remember { mutableStateOf(false) }
+    var showLvDialog by remember { mutableStateOf(false) }
     var editingRaumart by remember { mutableStateOf<RaumartEntity?>(null) }
     var bezeichnung by remember { mutableStateOf("") }
     var schnittvorgabe by remember { mutableStateOf("") }
+    var newLvSpalte by remember { mutableStateOf("") }
+    var newLvAufgabe by remember { mutableStateOf("") }
+    var newLvPlatzhalter by remember { mutableStateOf("{Rhythmus}") }
     val context = LocalContext.current
     var expandedCards by remember { mutableStateOf(setOf<Long>()) }
 
@@ -184,6 +188,40 @@ fun RaumartenEditableTab(uiState: SettingsUiState, viewModel: SettingsViewModel)
                     StylusEditText(value = bezeichnung, onValueChange = { bezeichnung = it }, label = "Bezeichnung", modifier = Modifier.fillMaxWidth())
                     Text("Schnittvorgabe (m²/h):", style = MaterialTheme.typography.labelMedium)
                     StylusEditText(value = schnittvorgabe, onValueChange = { schnittvorgabe = it }, label = "m²/h", modifier = Modifier.fillMaxWidth(), inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL, allowComma = true)
+                    
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text("LV-Aufgaben:", style = MaterialTheme.typography.labelMedium)
+                        IconButton(onClick = {
+                            newLvSpalte = ""
+                            newLvAufgabe = ""
+                            newLvPlatzhalter = "{Rhythmus}"
+                            showLvDialog = true
+                        }) {
+                            Icon(Icons.Default.Add, "LV hinzufügen")
+                        }
+                    }
+                    val lvAufgaben = viewModel.getLvEinstellungenForRaumart(editingRaumart!!.bezeichnung)
+                    if (lvAufgaben.isEmpty()) {
+                        Text("Keine LV-Aufgaben vorhanden", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    } else {
+                        lvAufgaben.forEach { lv ->
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text("${lv.spalte}: ${lv.aufgabe}", modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
+                                IconButton(onClick = { viewModel.deleteLvEinstellung(lv) }) {
+                                    Icon(Icons.Default.Close, "Löschen", modifier = Modifier.size(16.dp))
+                                }
+                            }
+                        }
+                    }
                 }
             },
             confirmButton = {
@@ -200,6 +238,34 @@ fun RaumartenEditableTab(uiState: SettingsUiState, viewModel: SettingsViewModel)
             },
             dismissButton = {
                 TextButton(onClick = { showEditDialog = false }) { Text("Abbrechen") }
+            }
+        )
+    }
+
+    if (showLvDialog && editingRaumart != null) {
+        AlertDialog(
+            onDismissRequest = { showLvDialog = false },
+            title = { Text("LV-Aufgabe hinzufügen") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text("Spalte:", style = MaterialTheme.typography.labelMedium)
+                    StylusEditText(value = newLvSpalte, onValueChange = { newLvSpalte = it }, label = "z.B. A", modifier = Modifier.fillMaxWidth())
+                    Text("Aufgabe:", style = MaterialTheme.typography.labelMedium)
+                    StylusEditText(value = newLvAufgabe, onValueChange = { newLvAufgabe = it }, label = "z.B. Kehren", modifier = Modifier.fillMaxWidth())
+                    Text("Platzhalter:", style = MaterialTheme.typography.labelMedium)
+                    StylusEditText(value = newLvPlatzhalter, onValueChange = { newLvPlatzhalter = it }, label = "{Rhythmus}", modifier = Modifier.fillMaxWidth())
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    if (newLvSpalte.isNotBlank() && newLvAufgabe.isNotBlank()) {
+                        viewModel.addLvEinstellung(editingRaumart!!.bezeichnung, newLvSpalte, newLvAufgabe, newLvPlatzhalter)
+                        showLvDialog = false
+                    }
+                }) { Text("Speichern") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showLvDialog = false }) { Text("Abbrechen") }
             }
         )
     }

@@ -203,6 +203,10 @@ class SettingsViewModel(
         }
     }
 
+    fun getLvEinstellungenForRaumart(raumart: String): List<LvEinstellungEntity> {
+        return uiState.value.lvEinstellungen.filter { it.raumart == raumart }
+    }
+
     class Factory(
         private val raumartRepository: RaumartRepository,
         private val rhythmusRepository: RhythmusRepository,
