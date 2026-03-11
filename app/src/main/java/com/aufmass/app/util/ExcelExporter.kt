@@ -72,10 +72,17 @@ class ExcelExporter(private val context: Context) {
         
         val rhysmenMap = rhysmen.associateBy { it.klartext }
         
-        val rowStart = 26
-        var rowNum = rowStart
+        if (raeume.isEmpty()) return
         
-        raeume.forEach { raum ->
+        // First, insert new rows for each room (shifts TOTAL and footer rows down)
+        val numRooms = raeume.size
+        if (numRooms > 0) {
+            sheet.shiftRows(26, sheet.lastRowNum, numRooms)
+        }
+        
+        var rowNum = 26
+        
+        raeume.forEachIndexed { index, raum ->
             val rhythmusValue = rhysmenMap[raum.rhythmus]?.exportwert ?: 1.0
             
             val row = sheet.getRow(rowNum) ?: sheet.createRow(rowNum)
@@ -109,30 +116,55 @@ class ExcelExporter(private val context: Context) {
             rowNum++
         }
         
-        val totalRow = sheet.getRow(28) ?: sheet.createRow(28)
-        totalRow.getCell(5)?.setCellFormula("SUM(F$rowStart:F${rowNum - 1})")
-        totalRow.getCell(9)?.setCellFormula("SUM(J$rowStart:J${rowNum - 1})")
-        totalRow.getCell(10)?.setCellFormula("SUM(K$rowStart:K${rowNum - 1})")
+        // Update TOTAL row (now shifted down by numRooms)
+        val totalRowNum = 28 + numRooms
+        val totalRow = sheet.getRow(totalRowNum) ?: sheet.createRow(totalRowNum)
+        totalRow.getCell(5)?.setCellFormula("SUM(F26:F${totalRowNum - 1})")
+        totalRow.getCell(9)?.setCellFormula("SUM(J26:J${totalRowNum - 1})")
+        totalRow.getCell(10)?.setCellFormula("SUM(K26:K${totalRowNum - 1})")
         
-        totalRow.getCell(11)?.setCellFormula("SUM(L$rowStart:L${rowNum - 1})")
-        totalRow.getCell(12)?.setCellFormula("SUM(M$rowStart:M${rowNum - 1})")
-        totalRow.getCell(13)?.setCellFormula("SUM(N$rowStart:N${rowNum - 1})")
-        totalRow.getCell(14)?.setCellFormula("SUM(O$rowStart:O${rowNum - 1})")
-        totalRow.getCell(15)?.setCellFormula("SUM(P$rowStart:P${rowNum - 1})")
-        totalRow.getCell(16)?.setCellFormula("SUM(Q$rowStart:Q${rowNum - 1})")
+        totalRow.getCell(11)?.setCellFormula("SUM(L26:L${totalRowNum - 1})")
+        totalRow.getCell(12)?.setCellFormula("SUM(M26:M${totalRowNum - 1})")
+        totalRow.getCell(13)?.setCellFormula("SUM(N26:N${totalRowNum - 1})")
+        totalRow.getCell(14)?.setCellFormula("SUM(O26:O${totalRowNum - 1})")
+        totalRow.getCell(15)?.setCellFormula("SUM(P26:P${totalRowNum - 1})")
+        totalRow.getCell(16)?.setCellFormula("SUM(Q26:Q${totalRowNum - 1})")
+        
+        // Update footer rows (Anfahrt, etc.)
+        val anfangFahrtRow = sheet.getRow(30 + numRooms)
+        if (anfangFahrtRow != null) {
+            anfangFahrtRow.getCell(7)?.setCellFormula("MAX(H26:H${totalRowNum - 1})")
+        }
+        val zeitlichErweitertRow = sheet.getRow(31 + numRooms)
+        if (zeitlichErweitertRow != null) {
+            zeitlichErweitertRow.getCell(7)?.setCellFormula("MAX(H26:H${totalRowNum - 1})")
+        }
+        
+        // Update Angebotssumme
+        val angebotssummeRow = sheet.getRow(33 + numRooms)
+        if (angebotssummeRow != null) {
+            angebotssummeRow.getCell(10)?.setCellFormula("SUM(J${totalRowNum},J${30 + numRooms}:J${31 + numRooms})")
+            angebotssummeRow.getCell(11)?.setCellFormula("SUM(K${totalRowNum},K${30 + numRooms}:K${31 + numRooms})")
+            angebotssummeRow.getCell(12)?.setCellFormula("SUM(L${totalRowNum},L${30 + numRooms}:L${31 + numRooms})")
+        }
     }
 
     private fun fillAufmassBodenSheet(workbook: Workbook, bodenSeList: List<BodenSeEntity>) {
         val sheet = workbook.getSheet("Aufmaß Boden") ?: return
         
-        val rowStart = 18
-        var rowNum = rowStart
+        if (bodenSeList.isEmpty()) return
+        
+        // Insert new rows for each entry
+        val numEntries = bodenSeList.size
+        sheet.shiftRows(18, sheet.lastRowNum, numEntries)
+        
+        var rowNum = 18
         
         bodenSeList.forEach { bodenSe ->
             val row = sheet.getRow(rowNum) ?: sheet.createRow(rowNum)
             
             if (row.getCell(0) == null) row.createCell(0)
-            row.getCell(0)?.setCellValue((rowNum - rowStart + 1).toDouble())
+            row.getCell(0)?.setCellValue((rowNum - 18 + 1).toDouble())
             
             if (row.getCell(1) == null) row.createCell(1)
             row.getCell(1)?.setCellValue(bodenSe.bezeichnung)
@@ -158,10 +190,12 @@ class ExcelExporter(private val context: Context) {
             rowNum++
         }
         
-        val sumRow = sheet.getRow(20) ?: sheet.createRow(20)
-        sumRow.getCell(7)?.setCellFormula("SUM(H$rowStart:H${rowNum - 1})")
-        sumRow.getCell(9)?.setCellFormula("SUM(J$rowStart:J${rowNum - 1})")
-        sumRow.getCell(11)?.setCellFormula("SUM(L$rowStart:L${rowNum - 1})")
+        // Update SUM row (now at 20 + numEntries)
+        val sumRowNum = 20 + numEntries
+        val sumRow = sheet.getRow(sumRowNum) ?: sheet.createRow(sumRowNum)
+        sumRow.getCell(7)?.setCellFormula("SUM(H18:H${sumRowNum - 1})")
+        sumRow.getCell(9)?.setCellFormula("SUM(J18:J${sumRowNum - 1})")
+        sumRow.getCell(11)?.setCellFormula("SUM(L18:L${sumRowNum - 1})")
     }
 
     private fun fillLeistungsverzeichnisSheet(

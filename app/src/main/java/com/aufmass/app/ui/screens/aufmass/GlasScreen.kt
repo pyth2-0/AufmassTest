@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Environment
 import android.text.InputType
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -84,6 +85,12 @@ fun GlasScreen(
     var bluetoothConnected by remember { mutableStateOf(false) }
     var lastMeasurement by remember { mutableStateOf<Double?>(null) }
 
+    fun hideKeyboard() {
+        hideKeyboard()
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow((context as? android.app.Activity)?.window?.decorView?.windowToken, 0)
+    }
+
     DisposableEffect(bluetoothManager.connectionState) {
         val observer = androidx.lifecycle.Observer<BluetoothManager.ConnectionState> { state ->
             bluetoothConnected = state == BluetoothManager.ConnectionState.Connected
@@ -115,7 +122,7 @@ fun GlasScreen(
                 
                 when (result) {
                     is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
-                        keyboardController?.hide()
+                        hideKeyboard()
                         val formatted = measurementHandler.formatMeasurement(result.value)
                         when (measurementHandler.getCurrentField()) {
                             BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
@@ -128,7 +135,7 @@ fun GlasScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
-                        keyboardController?.hide()
+                        hideKeyboard()
                         when (result.field) {
                             BluetoothMeasurementHandler.MeasurementField.HEIGHT -> {
                                 editTextHoehe.value?.apply { post { requestFocus() } }
@@ -137,7 +144,7 @@ fun GlasScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.CloseKeyboard -> {
-                        keyboardController?.hide()
+                        hideKeyboard()
                         focusManager.clearFocus()
                         measurementHandler.clearFocusedField()
                     }
@@ -235,7 +242,7 @@ fun GlasScreen(
                     notizen = notizen, fotoPath = fotoUris.joinToString("|") { it.toString() }
                 )
                 if (editingGlas == null) glasRepository.insert(glas) else glasRepository.update(glas)
-                keyboardController?.hide()
+                hideKeyboard()
                 resetForm()
             } catch (e: Exception) {
                 Toast.makeText(context, "Fehler: ${e.message}", Toast.LENGTH_SHORT).show()

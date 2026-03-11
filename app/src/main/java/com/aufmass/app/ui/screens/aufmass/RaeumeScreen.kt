@@ -8,6 +8,7 @@ import android.os.Environment
 import android.text.InputType
 import android.text.TextWatcher
 import android.text.Editable
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -132,6 +133,12 @@ fun RaeumeScreen(
         }
     }
 
+    fun hideKeyboard() {
+        hideKeyboard()
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow((context as? android.app.Activity)?.window?.decorView?.windowToken, 0)
+    }
+
     DisposableEffect(bluetoothManager.lastMeasurement) {
         val observer = androidx.lifecycle.Observer<DistoDataParser.DistoMeasurement?> { measurement ->
             if (measurement != null) {
@@ -139,7 +146,7 @@ fun RaeumeScreen(
                 
                 when (result) {
                     is BluetoothMeasurementHandler.MeasurementResult.InsertValue -> {
-                        keyboardController?.hide()
+                        hideKeyboard()
                         val formatted = measurementHandler.formatMeasurement(result.value)
                         when (measurementHandler.getCurrentField()) {
                             BluetoothMeasurementHandler.MeasurementField.LENGTH -> {
@@ -152,7 +159,7 @@ fun RaeumeScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.JumpToField -> {
-                        keyboardController?.hide()
+                        hideKeyboard()
                         when (result.field) {
                             BluetoothMeasurementHandler.MeasurementField.WIDTH -> {
                                 editTextBreite.value?.apply { post { requestFocus() } }
@@ -161,7 +168,7 @@ fun RaeumeScreen(
                         }
                     }
                     is BluetoothMeasurementHandler.MeasurementResult.CloseKeyboard -> {
-                        keyboardController?.hide()
+                        hideKeyboard()
                         focusManager.clearFocus()
                         measurementHandler.clearFocusedField()
                     }
@@ -298,7 +305,7 @@ fun RaeumeScreen(
                     zusatzlicheMasse = zusatzlicheMasseStr
                 )
                 if (editingRaum == null) raumRepository.insert(raum) else raumRepository.update(raum)
-                keyboardController?.hide()
+                hideKeyboard()
                 resetForm()
             } catch (e: Exception) {
                 Toast.makeText(context, "Fehler beim Speichern: ${e.message}", Toast.LENGTH_SHORT).show()
