@@ -129,9 +129,9 @@ class ExcelExporter(private val context: Context) {
         val startRow = 26
         val templateEndRow = 35
         
-        // Insert new rows
+        // Insert new rows AFTER the template data row (shift from row 27, not 26)
         if (numRooms > 0) {
-            sheet.shiftRows(startRow, templateEndRow, numRooms)
+            sheet.shiftRows(startRow + 1, templateEndRow, numRooms)
         }
         
         var rowNum = startRow
@@ -161,7 +161,7 @@ class ExcelExporter(private val context: Context) {
             
             // Set formulas for this row
             setCellFormula(row, 5, "C$rowNum*D$rowNum*E$rowNum")  // m²-Fläche
-            setCellFormula(row, 8, "\$I\$24")  // Std.lohn
+            setCellFormula(row, 8, "\$I\$23")  // Std.lohn - references SVS in I23
             setCellFormula(row, 9, "IFERROR((F$rowNum/G$rowNum*I$rowNum*H$rowNum),\"\")")  // Total
             setCellFormula(row, 10, "IFERROR((F$rowNum/G$rowNum),\"\")")  // Zeit
             
@@ -169,6 +169,9 @@ class ExcelExporter(private val context: Context) {
             for (dayCol in 11..16) {
                 setCellFormula(row, dayCol, "\$K$rowNum")
             }
+            
+            // Rhythmus-Kontrolle column R
+            setCellFormula(row, 17, "IF(H$rowNum<2.17,IF(Q$rowNum=0,\"Fehler\",\"\"),IF(H$rowNum/4.33=COUNT(L$rowNum:P$rowNum),\"\",\"Fehler\"))")
             
             rowNum++
         }
@@ -180,7 +183,7 @@ class ExcelExporter(private val context: Context) {
         setCellFormula(totalRow, 9, "SUM(J$startRow:J${totalRowNum - 1})")
         setCellFormula(totalRow, 10, "SUM(K$startRow:K${totalRowNum - 1})")
         
-        for (col in 11..16) {
+        for (col in 11..17) {
             setCellFormula(totalRow, col, "SUM(${getColumnLetter(col)}$startRow:${getColumnLetter(col)}${totalRowNum - 1})")
         }
         
