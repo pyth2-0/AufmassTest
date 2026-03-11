@@ -153,7 +153,7 @@ class BluetoothManager(context: Context) {
     }
 
     fun tryAutoConnect() {
-        if (!settingsManager.autoConnect || !settingsManager.bluetoothEnabled) {
+        if (!settingsManager.autoConnect) {
             addLog("Auto-Connect deaktiviert")
             return
         }

@@ -34,9 +34,13 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         // Auto-Connect für Bluetooth beim App-Start und wenn App wieder aufgerufen wird
         val bluetoothSettings = BluetoothSettingsManager.getInstance(this)
-        if (bluetoothSettings.autoConnect && bluetoothSettings.isConfigured()) {
-            val bluetoothManager = BluetoothManager.getInstance(this)
-            bluetoothManager.tryAutoConnect()
+        if (bluetoothSettings.autoConnect) {
+            if (bluetoothSettings.isConfigured()) {
+                val bluetoothManager = BluetoothManager.getInstance(this)
+                bluetoothManager.tryAutoConnect()
+            } else {
+                Toast.makeText(this, "Keine MAC-Adresse gespeichert", Toast.LENGTH_SHORT).show()
+            }
         }
     }
     
