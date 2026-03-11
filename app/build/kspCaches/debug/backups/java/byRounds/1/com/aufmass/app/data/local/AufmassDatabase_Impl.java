@@ -82,13 +82,13 @@ public final class AufmassDatabase_Impl extends AufmassDatabase {
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_boden_se_aufmassId` ON `boden_se` (`aufmassId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `einstellung_raumart` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `bezeichnung` TEXT NOT NULL, `schnittvorgabe` REAL NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `einstellung_rhythmus` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `klartext` TEXT NOT NULL, `exportwert` REAL NOT NULL, `lvWert` REAL NOT NULL)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `einstellung_bodenbelag` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `bezeichnung` TEXT NOT NULL, `abkuerzung` TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `einstellung_bodenbelag` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `bezeichnung` TEXT NOT NULL, `abkuerzung` TEXT NOT NULL, `quadratmeterSchnitt` REAL NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `einstellung_glasart` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `bezeichnung` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `einstellung_lv` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `raumart` TEXT NOT NULL, `spalte` TEXT NOT NULL, `aufgabe` TEXT NOT NULL, `rhythmusPlatzhalter` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `objektfragebogen` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `aufmassId` INTEGER NOT NULL, `materialkammer` TEXT NOT NULL, `waschmaschine` INTEGER NOT NULL, `schmutzfangzone` INTEGER NOT NULL, `wasser` INTEGER NOT NULL, `strom` INTEGER NOT NULL, `muelltrennung` INTEGER NOT NULL, `muellentsorgung` TEXT NOT NULL, `aufzug` INTEGER NOT NULL, `reinigungszustand` TEXT NOT NULL, `wechselgruende` TEXT NOT NULL, `schluesselobjekt` INTEGER NOT NULL, `alarmanlage` INTEGER NOT NULL, `besonderheiten` TEXT NOT NULL, FOREIGN KEY(`aufmassId`) REFERENCES `aufmass`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_objektfragebogen_aufmassId` ON `objektfragebogen` (`aufmassId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6502ebc4dc6464c6cba6716622d623f9')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f5749d872793c84a69111fdce550cc2e')");
       }
 
       @Override
@@ -262,10 +262,11 @@ public final class AufmassDatabase_Impl extends AufmassDatabase {
                   + " Expected:\n" + _infoEinstellungRhythmus + "\n"
                   + " Found:\n" + _existingEinstellungRhythmus);
         }
-        final HashMap<String, TableInfo.Column> _columnsEinstellungBodenbelag = new HashMap<String, TableInfo.Column>(3);
+        final HashMap<String, TableInfo.Column> _columnsEinstellungBodenbelag = new HashMap<String, TableInfo.Column>(4);
         _columnsEinstellungBodenbelag.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsEinstellungBodenbelag.put("bezeichnung", new TableInfo.Column("bezeichnung", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsEinstellungBodenbelag.put("abkuerzung", new TableInfo.Column("abkuerzung", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsEinstellungBodenbelag.put("quadratmeterSchnitt", new TableInfo.Column("quadratmeterSchnitt", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysEinstellungBodenbelag = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesEinstellungBodenbelag = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoEinstellungBodenbelag = new TableInfo("einstellung_bodenbelag", _columnsEinstellungBodenbelag, _foreignKeysEinstellungBodenbelag, _indicesEinstellungBodenbelag);
@@ -331,7 +332,7 @@ public final class AufmassDatabase_Impl extends AufmassDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "6502ebc4dc6464c6cba6716622d623f9", "5371596d7495ce1804ff1dfd79a02780");
+    }, "f5749d872793c84a69111fdce550cc2e", "178265c3c82014873c731f39677dadcb");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

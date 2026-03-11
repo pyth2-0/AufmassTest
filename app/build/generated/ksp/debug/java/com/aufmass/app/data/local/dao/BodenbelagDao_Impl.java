@@ -47,7 +47,7 @@ public final class BodenbelagDao_Impl implements BodenbelagDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `einstellung_bodenbelag` (`id`,`bezeichnung`,`abkuerzung`) VALUES (nullif(?, 0),?,?)";
+        return "INSERT OR REPLACE INTO `einstellung_bodenbelag` (`id`,`bezeichnung`,`abkuerzung`,`quadratmeterSchnitt`) VALUES (nullif(?, 0),?,?,?)";
       }
 
       @Override
@@ -56,6 +56,7 @@ public final class BodenbelagDao_Impl implements BodenbelagDao {
         statement.bindLong(1, entity.getId());
         statement.bindString(2, entity.getBezeichnung());
         statement.bindString(3, entity.getAbkuerzung());
+        statement.bindDouble(4, entity.getQuadratmeterSchnitt());
       }
     };
     this.__deletionAdapterOfBodenbelagEntity = new EntityDeletionOrUpdateAdapter<BodenbelagEntity>(__db) {
@@ -75,7 +76,7 @@ public final class BodenbelagDao_Impl implements BodenbelagDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `einstellung_bodenbelag` SET `id` = ?,`bezeichnung` = ?,`abkuerzung` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `einstellung_bodenbelag` SET `id` = ?,`bezeichnung` = ?,`abkuerzung` = ?,`quadratmeterSchnitt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -84,7 +85,8 @@ public final class BodenbelagDao_Impl implements BodenbelagDao {
         statement.bindLong(1, entity.getId());
         statement.bindString(2, entity.getBezeichnung());
         statement.bindString(3, entity.getAbkuerzung());
-        statement.bindLong(4, entity.getId());
+        statement.bindDouble(4, entity.getQuadratmeterSchnitt());
+        statement.bindLong(5, entity.getId());
       }
     };
     this.__preparedStmtOfDeleteAll = new SharedSQLiteStatement(__db) {
@@ -190,6 +192,7 @@ public final class BodenbelagDao_Impl implements BodenbelagDao {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
           final int _cursorIndexOfBezeichnung = CursorUtil.getColumnIndexOrThrow(_cursor, "bezeichnung");
           final int _cursorIndexOfAbkuerzung = CursorUtil.getColumnIndexOrThrow(_cursor, "abkuerzung");
+          final int _cursorIndexOfQuadratmeterSchnitt = CursorUtil.getColumnIndexOrThrow(_cursor, "quadratmeterSchnitt");
           final List<BodenbelagEntity> _result = new ArrayList<BodenbelagEntity>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final BodenbelagEntity _item;
@@ -199,7 +202,9 @@ public final class BodenbelagDao_Impl implements BodenbelagDao {
             _tmpBezeichnung = _cursor.getString(_cursorIndexOfBezeichnung);
             final String _tmpAbkuerzung;
             _tmpAbkuerzung = _cursor.getString(_cursorIndexOfAbkuerzung);
-            _item = new BodenbelagEntity(_tmpId,_tmpBezeichnung,_tmpAbkuerzung);
+            final double _tmpQuadratmeterSchnitt;
+            _tmpQuadratmeterSchnitt = _cursor.getDouble(_cursorIndexOfQuadratmeterSchnitt);
+            _item = new BodenbelagEntity(_tmpId,_tmpBezeichnung,_tmpAbkuerzung,_tmpQuadratmeterSchnitt);
             _result.add(_item);
           }
           return _result;

@@ -737,10 +737,6 @@ fun BluetoothSettingsTab() {
     ) {
         Text("Bluetooth-Einstellungen", style = MaterialTheme.typography.headlineSmall)
 
-        // Debug info
-        Text("Gespeichert: MAC='${settingsManager.macAddress}', AutoConnect=${settingsManager.autoConnect}", 
-            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
-
         Card {
             Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Row(

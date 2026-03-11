@@ -8,5 +8,6 @@ data class BodenbelagEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val bezeichnung: String,
-    val abkuerzung: String
+    val abkuerzung: String,
+    val quadratmeterSchnitt: Double = 0.0
 )
