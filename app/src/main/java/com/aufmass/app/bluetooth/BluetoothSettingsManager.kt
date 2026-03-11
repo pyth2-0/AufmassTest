@@ -27,33 +27,37 @@ class BluetoothSettingsManager(context: Context) {
 
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
+    fun reloadFromDisk() {
+        prefs.edit().putString("__reload__", System.currentTimeMillis().toString()).commit()
+    }
+
     var macAddress: String
         get() = prefs.getString(KEY_MAC_ADDRESS, "") ?: ""
-        set(value) = prefs.edit().putString(KEY_MAC_ADDRESS, value).apply()
+        set(value) { prefs.edit().putString(KEY_MAC_ADDRESS, value).commit() }
 
     var autoJump: Boolean
         get() = prefs.getBoolean(KEY_AUTO_JUMP, true)
-        set(value) = prefs.edit().putBoolean(KEY_AUTO_JUMP, value).apply()
+        set(value) { prefs.edit().putBoolean(KEY_AUTO_JUMP, value).commit() }
 
     var autoConnect: Boolean
         get() = prefs.getBoolean(KEY_AUTO_CONNECT, false)
-        set(value) = prefs.edit().putBoolean(KEY_AUTO_CONNECT, value).apply()
+        set(value) { prefs.edit().putBoolean(KEY_AUTO_CONNECT, value).commit() }
 
     var bluetoothEnabled: Boolean
         get() = prefs.getBoolean(KEY_BLUETOOTH_ENABLED, true)
-        set(value) = prefs.edit().putBoolean(KEY_BLUETOOTH_ENABLED, value).apply()
+        set(value) { prefs.edit().putBoolean(KEY_BLUETOOTH_ENABLED, value).commit() }
 
     var reconnectIntervalMs: Long
-        get() = prefs.getLong(KEY_RECONNECT_INTERVAL, 30000L) // Default 30 seconds
-        set(value) = prefs.edit().putLong(KEY_RECONNECT_INTERVAL, value).apply()
+        get() = prefs.getLong(KEY_RECONNECT_INTERVAL, 30000L)
+        set(value) { prefs.edit().putLong(KEY_RECONNECT_INTERVAL, value).commit() }
 
     var lastConnectionAttempt: Long
         get() = prefs.getLong(KEY_LAST_CONNECTION_ATTEMPT, 0L)
-        set(value) = prefs.edit().putLong(KEY_LAST_CONNECTION_ATTEMPT, value).apply()
+        set(value) { prefs.edit().putLong(KEY_LAST_CONNECTION_ATTEMPT, value).commit() }
 
     var lastDeviceName: String
         get() = prefs.getString(KEY_LAST_DEVICE_NAME, "") ?: ""
-        set(value) = prefs.edit().putString(KEY_LAST_DEVICE_NAME, value).apply()
+        set(value) { prefs.edit().putString(KEY_LAST_DEVICE_NAME, value).commit() }
 
     fun isConfigured(): Boolean = macAddress.isNotBlank()
 }

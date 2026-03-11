@@ -666,6 +666,7 @@ fun BluetoothSettingsTab() {
 
     // Einstellungen neu laden
     fun reloadSettings() {
+        settingsManager.reloadFromDisk()
         macAddress = settingsManager.macAddress
         autoJump = settingsManager.autoJump
         autoConnect = settingsManager.autoConnect
