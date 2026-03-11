@@ -25,6 +25,7 @@ import com.aufmass.app.ui.screens.settings.SettingsViewModel
 import com.aufmass.app.ui.theme.AufmassAppTheme
 import com.aufmass.app.util.ExcelExporter
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -137,12 +138,19 @@ class MainActivity : ComponentActivity() {
                                 uiState.aufmass?.let { aufmass ->
                                     lifecycleScope.launch {
                                         try {
+                                            val rhysmen = rhythmusRepository.getAllRhythmen().first()
+                                            val bodenbelage = bodenbelagRepository.getAllBodenbelage().first()
+                                            val lvEinstellungen = lvEinstellungRepository.getAllLvEinstellungen().first()
+                                            
                                             val file = withContext(Dispatchers.IO) {
                                                 excelExporter.exportAufmass(
                                                     aufmass,
                                                     uiState.raeume,
                                                     uiState.glasList,
-                                                    uiState.bodenSeList
+                                                    uiState.bodenSeList,
+                                                    lvEinstellungen,
+                                                    rhysmen,
+                                                    bodenbelage
                                                 )
                                             }
                                             startActivity(excelExporter.shareFile(file))
