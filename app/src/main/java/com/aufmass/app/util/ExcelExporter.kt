@@ -22,7 +22,8 @@ class ExcelExporter(private val context: Context) {
         lvEinstellungen: List<LvEinstellungEntity> = emptyList(),
         rhysmen: List<RhythmusEntity> = emptyList(),
         bodenbelage: List<BodenbelagEntity> = emptyList(),
-        objektfragebogen: ObjektfragebogenEntity? = null
+        objektfragebogen: ObjektfragebogenEntity? = null,
+        raumarten: List<RaumartEntity> = emptyList()
     ): File {
         val templatePath = "kalkulation_vorlage.xlsx"
         val inputStream: InputStream = context.assets.open(templatePath)
@@ -31,7 +32,7 @@ class ExcelExporter(private val context: Context) {
         val standardRhythmus = rhysmen.find { it.klartext == aufmass.standardrhythmus }?.exportwert ?: 1.0
         
         fillStammdatenSheet(workbook, aufmass, objektfragebogen)
-        fillKalkulationUrsheet(workbook, raeume, rhysmen, bodenbelage)
+        fillKalkulationUrsheet(workbook, raeume, rhysmen, bodenbelage, raumarten)
         fillAufmassGlasSheet(workbook, glasList)
         fillAufmassBodenSheet(workbook, bodenSeList)
         fillLeistungsverzeichnisSheet(workbook, raeume, lvEinstellungen, rhysmen, standardRhythmus)
@@ -116,12 +117,14 @@ class ExcelExporter(private val context: Context) {
         workbook: Workbook,
         raeume: List<RaumEntity>,
         rhysmen: List<RhythmusEntity>,
-        bodenbelage: List<BodenbelagEntity>
+        bodenbelage: List<BodenbelagEntity>,
+        raumarten: List<RaumartEntity>
     ) {
         val sheet = workbook.getSheet("Kalk. UR") ?: return
         
         val rhysmenMap = rhysmen.associateBy { it.klartext }
         val bodenbelagMap = bodenbelage.associateBy { it.bezeichnung }
+        val raumartMap = raumarten.associateBy { it.bezeichnung }
         
         if (raeume.isEmpty()) return
         
@@ -140,7 +143,14 @@ class ExcelExporter(private val context: Context) {
             val rhythmusValue = rhysmenMap[raum.rhythmus]?.exportwert ?: 1.0
             val bodenbelagEntity = bodenbelagMap[raum.bodenbelag]
             val belagKuerzel = bodenbelagEntity?.abkuerzung ?: ""
-            val quadratmeterSchnitt = bodenbelagEntity?.quadratmeterSchnitt ?: 0.0
+            val bodenSchnitt = bodenbelagEntity?.quadratmeterSchnitt ?: 0.0
+            
+            // Get Raumart schnittvorgabe
+            val raumartEntity = raumartMap[raum.raumart]
+            val raumartSchnitt = raumartEntity?.schnittvorgabe ?: 0.0
+            
+            // Total schnitt = Bodenbelag schnitt + Raumart schnitt
+            val totalSchnitt = bodenSchnitt + raumartSchnitt
             
             val row = sheet.getRow(rowNum) ?: sheet.createRow(rowNum)
             
@@ -154,8 +164,8 @@ class ExcelExporter(private val context: Context) {
             setCellValue(sheet, rowNum, 3, raum.laenge)
             // E: Breite
             setCellValue(sheet, rowNum, 4, raum.breite)
-            // G: m²-Schnitt
-            setCellValue(sheet, rowNum, 6, quadratmeterSchnitt)
+            // G: m²-Schnitt (Boden + Raumart)
+            setCellValue(sheet, rowNum, 6, totalSchnitt)
             // H: Rhythmus-Wert
             setCellValue(sheet, rowNum, 7, rhythmusValue)
             

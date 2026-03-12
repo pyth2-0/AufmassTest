@@ -142,6 +142,7 @@ class MainActivity : ComponentActivity() {
                                             val rhysmen = rhythmusRepository.getAllRhythmen().first()
                                             val bodenbelage = bodenbelagRepository.getAllBodenbelage().first()
                                             val lvEinstellungen = lvEinstellungRepository.getAllLvEinstellungen().first()
+                                            val raumarten = raumartRepository.getAllRaumarten().first()
                                             
                                             val file = withContext(Dispatchers.IO) {
                                                 excelExporter.exportAufmass(
@@ -152,7 +153,8 @@ class MainActivity : ComponentActivity() {
                                                     lvEinstellungen,
                                                     rhysmen,
                                                     bodenbelage,
-                                                    uiState.objektfragebogen
+                                                    uiState.objektfragebogen,
+                                                    raumarten
                                                 )
                                             }
                                             startActivity(excelExporter.shareFile(file))

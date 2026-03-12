@@ -70,7 +70,7 @@ public final class AufmassDatabase_Impl extends AufmassDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(6) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(7) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `aufmass` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `titel` TEXT NOT NULL, `firma` TEXT NOT NULL, `anschrift` TEXT NOT NULL, `objektanschrift` TEXT NOT NULL, `standardrhythmus` TEXT NOT NULL, `wochentage` TEXT NOT NULL, `reinigungszeiten` TEXT NOT NULL, `reinigungstage` TEXT NOT NULL, `erstelltAm` INTEGER NOT NULL, `notizen` TEXT NOT NULL)");
